@@ -46,7 +46,6 @@ import javax.swing.JFrame;
 import net.sf.jasperreports.view.JasperViewer;
 import org.openswing.swing.util.server.HibernateUtils;
 
-
 /**
  *
  * @author bc
@@ -63,8 +62,10 @@ public class ReporteController extends DefaultGridFrameController implements Act
     }
 
     public void mostrarReporte(List dataSource, ArrayList<ParametroReporte> parametrosFiltro,
-            String archivo, String titulo, String estilo2) {
-        if (!dataSource.isEmpty()) {            
+            Reporte reporte, String estilo2) {
+        if (reporte.getEnviarData() && (dataSource==null || dataSource.isEmpty())) {
+            JOptionPane.showMessageDialog(MDIFrame.getInstance(), "El documento no tiene paginas.");
+        } else {
             for (ParametroReporte parametro : parametrosFiltro) {
                 if (parametro.getOperador().compareToIgnoreCase("like") == 0) {
                     parametro.setValor(parametro.getValor().substring(1, parametro.getValor().length()
@@ -74,23 +75,22 @@ public class ReporteController extends DefaultGridFrameController implements Act
                 parametro.setOperador(ClientSettings.getInstance().getResources().getResource(parametro.getOperador()));
             }
             try {
-                String rutaReporte = General.empresa.getRutaReportes() + "/" + archivo + ".jasper";
+                String rutaReporte = General.empresa.getRutaReportes() + "/" + reporte.getFile() + ".jasper";
                 Map parameters = new HashMap();
+                parameters.put("reporteSQL", reporte.getBaseSQL());
                 parameters.put(JRParameter.REPORT_LOCALE, Locale.getDefault());
                 parameters.put(JRParameter.REPORT_RESOURCE_BUNDLE, java.util.ResourceBundle.getBundle("Spanish"));
                 parameters.put("datosSistema",
                         new String[]{
                             General.edition + " ",
                             General.contacto});
-                parameters.put("reporteTitulo", titulo);
-                parameters.put("reporteFile", archivo);
+                parameters.put("reporteTitulo", reporte.getTitulo());
+                parameters.put("reporteFile", reporte.getFile());
                 parameters.put("reporteEstilo", estilo2);
                 parameters.put("reporteParametros", parametrosFiltro);
                 parameters.put("usuario", General.usuario.getUserName());
                 parameters.put("oficina", General.oficina.getNombre());
                 parameters.put("responsable", General.oficina.getResponsable());
-                parameters.put("nume", "numeroxxxxxxxx");
-
                 if (encabezado == null) {
                     parameters.put("empresaNombre", General.empresa.getNombre());
                     parameters.put("empresaRif", General.empresa.getRif2());
@@ -103,42 +103,44 @@ public class ReporteController extends DefaultGridFrameController implements Act
                     parameters.put("empresaLogo", getIcon(encabezado.getImagen()));
                     parameters.put("empresaObservacion", encabezado.getObservacion());
                 }
-                JasperPrint jasperPrint;
-//                Session s = null;
-//                
-//            try {
-//                s = HibernateUtil.getSessionFactory().openSession();
-//                parameters.put("HIBERNATE_SESSION", s);
-//                //List dataSource = s.createQuery(reporte.getBaseSQL()).list();
-//                //mostrarReporte(dataSource, new ArrayList<ParametroReporte>(0), reporte.getFile(), reporte.getTitulo(), estilo);
-//            //} catch (Exception ex) {
-//            //    LoggerUtil.error(this.getClass(), "showReport", ex);
-//            
-//                
-//                
-//                jasperPrint = JasperFillManager.fillReport(rutaReporte, parameters);
-////                System.out.println(s.isOpen());
-//                } finally {
-//                s.close();
-//            }
 
-            jasperPrint = JasperFillManager.fillReport(rutaReporte, parameters,
-                        new JRBeanCollectionDataSource(dataSource));
-            
-            JasperViewer x=new JasperViewer(jasperPrint, false);
-            x.setState(JFrame.MAXIMIZED_BOTH);
-            x.setAlwaysOnTop(true);
-            //x.toFront();
-            x.setVisible(true);
-            
-            
-            
-                //JasperViewer2.viewReport(jasperPrint, false);
 
-                //MDIFrame.getInstance().toBack();
+                JasperPrint jasperPrint = null;
 
+                if (reporte.getEnviarData()) {
+                    jasperPrint = JasperFillManager.fillReport(
+                            rutaReporte, parameters,
+                            new JRBeanCollectionDataSource(dataSource));
+                } else if (reporte.getHql()) {
+                    Session s = null;
+                    try {
+                        s = HibernateUtil.getSessionFactory().openSession();
+                        parameters.put("HIBERNATE_SESSION", s);
+                        jasperPrint = JasperFillManager.fillReport(
+                                rutaReporte, parameters);
+                    } finally {
+                        s.close();
+                    }
+                } else if (!reporte.getHql()) {
+                    Session s = null;
+                    try {
+                        s = HibernateUtil.getSessionFactory().openSession();
+                        jasperPrint = JasperFillManager.fillReport(
+                                rutaReporte, parameters,
+                                s.connection());
+                    } finally {
+                        s.close();
+                    }
+                }
+
+                JasperViewer frame = new JasperViewer(jasperPrint, false);
+                frame.setState(JFrame.MAXIMIZED_BOTH);
+                frame.setAlwaysOnTop(true);
+                //x.toFront();
+                frame.setVisible(true);
+
+//                para mostrar reporte en pdf en la web
 //                OutputStream ouputStream = new FileOutputStream(new File("reporteListo.pdf"));
-//
 //                dataSource=new ArrayList(0);
 //
 //                Data clasex=new Data();
@@ -157,8 +159,6 @@ public class ReporteController extends DefaultGridFrameController implements Act
             } catch (Exception ex) {
                 LoggerUtil.error(this.getClass(), "mostrarReporte", ex);
             }
-        } else {
-            JOptionPane.showMessageDialog(MDIFrame.getInstance(), "El documento no tiene paginas.");
         }
     }
     protected DefaultGridFrame gridF;
@@ -177,11 +177,11 @@ public class ReporteController extends DefaultGridFrameController implements Act
             gridF = null;
             switch (reporte.getCategoria()) {
                 case PERSONAS: {
-                gridF = new Personas2GridFrame();
+                    gridF = new Personas2GridFrame();
                     break;
                 }
                 default: {
-                gridF = new Filtros().mostrarFiltro(reporte, false);
+                    gridF = new Filtros().mostrarFiltro(reporte, false);
                 }
             }
             if (gridF != null) {
@@ -202,7 +202,9 @@ public class ReporteController extends DefaultGridFrameController implements Act
             try {
                 s = HibernateUtil.getSessionFactory().openSession();
                 List dataSource = s.createQuery(reporte.getBaseSQL()).list();
-                mostrarReporte(dataSource, new ArrayList<ParametroReporte>(0), reporte.getFile(), reporte.getTitulo(), estilo);
+                mostrarReporte(dataSource,
+                        new ArrayList<ParametroReporte>(0),
+                        reporte, estilo);
             } catch (Exception ex) {
                 LoggerUtil.error(this.getClass(), "showReport", ex);
             } finally {
@@ -268,8 +270,7 @@ public class ReporteController extends DefaultGridFrameController implements Act
                         }
                     }
                 }
-                mostrarReporte(dataSource, parametros, reporte.getFile(), reporte.getTitulo(),
-                        estilo);
+                mostrarReporte(dataSource, parametros, reporte, estilo);
                 return new VOListResponse(new ArrayList(0), false, 0);
             }
         } catch (Exception ex) {
