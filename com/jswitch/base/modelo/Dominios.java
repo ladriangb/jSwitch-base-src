@@ -510,7 +510,7 @@ public class Dominios {
 
     public static enum CategoriaReporte {
 
-        PERSONAS, x1
+        PERSONAS, REMESA, SINIESTROS ,x1
     }
 
     public static Domain CategoriaReporte() {// Listo
