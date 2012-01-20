@@ -10,6 +10,7 @@ import com.jswitch.base.vista.util.DefaultGridFrame;
 public class Filtros {
 
     public DefaultGridFrame mostrarFiltro(Reporte reporte, boolean sencillo) {
+        System.err.println("Not yet implemented : Filtros");
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

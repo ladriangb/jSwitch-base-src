@@ -78,6 +78,19 @@ public class Reporte extends BeanVO implements Serializable {
     @BusinessKey(exclude = Method.EQUALS)
     private Boolean filtroObligado;
     /**
+     * True para hql, false para sql
+     */
+    @Column
+    @BusinessKey(exclude = Method.EQUALS)
+    private Boolean hql;
+    /**
+     * true para pasar la data al reporte,
+     * false para pasar la conexion.
+     */
+    @Column
+    @BusinessKey(exclude = Method.EQUALS)
+    private Boolean enviarData;
+    /**
      */
     @Column
     @Size(min = 0, max = 3000)
@@ -87,11 +100,7 @@ public class Reporte extends BeanVO implements Serializable {
     public Reporte() {
     }
 
-    public Reporte(CategoriaReporte categoria, int tipo, String file, String titulo, String observacion, String baseSQL, Boolean filtroObligado) {
-        this(categoria, tipo, file, titulo, observacion, baseSQL, "Carta",filtroObligado);
-    }
-
-    public Reporte(CategoriaReporte categoria, int tipo, String file, String titulo, String observacion, String baseSQL, String tipoPapel, Boolean filtroObligado) {
+    public Reporte(CategoriaReporte categoria, int tipo, String file, String titulo, String observacion, String baseSQL, String tipoPapel, Boolean filtroObligado, Boolean hql, Boolean enviarData) {
         this.categoria = categoria;
         this.tipo = tipo;
         this.file = file;
@@ -99,7 +108,9 @@ public class Reporte extends BeanVO implements Serializable {
         this.observacion = observacion;
         this.baseSQL = baseSQL;
         this.filtroObligado = filtroObligado;
-        this.tipoPapel = tipoPapel;        
+        this.tipoPapel = tipoPapel;
+        this.hql = hql;
+        this.enviarData = enviarData;
     }
 
     public Long getId() {
@@ -180,5 +191,36 @@ public class Reporte extends BeanVO implements Serializable {
 
     public void setFiltroObligado(Boolean filtroObligado) {
         this.filtroObligado = filtroObligado;
+    }
+
+    /**
+     * @return true para hql, false para sql     * 
+     */
+    public Boolean getHql() {
+        return hql;
+    }
+
+    /**
+     * @param true para hql, false para sql
+     */
+    public void setHql(Boolean hql) {
+        this.hql = hql;
+    }
+
+    /**
+     * @return true para pasar la data al reporte,
+     * false para pasar la conexion.
+     * 
+     */
+    public Boolean getEnviarData() {
+        return enviarData;
+    }
+
+    /**
+     * @param true para pasar la data al reporte,
+     * false para pasar la conexion.
+     */
+    public void setEnviarData(Boolean enviarData) {
+        this.enviarData = enviarData;
     }
 }
