@@ -91,6 +91,13 @@ public class Reporte extends BeanVO implements Serializable {
     @BusinessKey(exclude = Method.EQUALS)
     private Boolean enviarData;
     /**
+     * true para utilizar la descripcion del FIELD en el reporte y no el nombre,
+     * false para lo contrario.
+     */
+    @Column
+    @BusinessKey(exclude = Method.EQUALS)
+    private Boolean useFieldDescription;
+    /**
      */
     @Column
     @Size(min = 0, max = 3000)
@@ -100,7 +107,7 @@ public class Reporte extends BeanVO implements Serializable {
     public Reporte() {
     }
 
-    public Reporte(CategoriaReporte categoria, int tipo, String file, String titulo, String observacion, String baseSQL, String tipoPapel, Boolean filtroObligado, Boolean hql, Boolean enviarData) {
+    public Reporte(CategoriaReporte categoria, int tipo, String file, String titulo, String observacion, String baseSQL, String tipoPapel, Boolean filtroObligado, Boolean hql, Boolean enviarData, Boolean useFieldDescription) {
         this.categoria = categoria;
         this.tipo = tipo;
         this.file = file;
@@ -111,6 +118,7 @@ public class Reporte extends BeanVO implements Serializable {
         this.tipoPapel = tipoPapel;
         this.hql = hql;
         this.enviarData = enviarData;
+        this.useFieldDescription=useFieldDescription;
     }
 
     public Long getId() {
@@ -223,4 +231,22 @@ public class Reporte extends BeanVO implements Serializable {
     public void setEnviarData(Boolean enviarData) {
         this.enviarData = enviarData;
     }
+
+    /**
+     * @return true para utilizar la descripcion del FIELD en el reporte y no el nombre,
+     * false para lo contrario.
+     */
+    public Boolean getUseFieldDescription() {
+        return useFieldDescription;
+    }
+
+    /**
+     *  @param true para utilizar la descripcion del FIELD en el reporte y no el nombre,
+     * false para lo contrario.
+     */
+    public void setUseFieldDescription(Boolean useFieldDescription) {
+        this.useFieldDescription = useFieldDescription;
+    }
+    
+    
 }
