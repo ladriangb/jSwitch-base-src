@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name="SYST_Encabezado")
-public class Encabezado extends BeanVO implements Serializable {
+public class Encabezado extends BeanVO implements Auditable {
     //TODO incluir a la persona que es de tipo productor para obtener sus datos
 
     /**
