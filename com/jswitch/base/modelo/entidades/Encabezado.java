@@ -1,5 +1,7 @@
 package com.jswitch.base.modelo.entidades;
 
+import com.jswitch.base.modelo.entidades.auditoria.Auditable;
+import com.jswitch.base.modelo.entidades.auditoria.AuditoriaBasica;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import javax.swing.Icon;
 import com.jswitch.base.modelo.util.bean.BeanVO;
 import com.jswitch.base.modelo.util.ehts.BusinessKey;
 import com.jswitch.base.modelo.util.ehts.Method;
+import javax.persistence.Embedded;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -62,6 +65,13 @@ public class Encabezado extends BeanVO implements Serializable {
     @Column
     private Integer optLock;
 
+    /**
+     * Datos de auditado de modificaciones en la tabla
+     */
+    @Embedded
+    @BusinessKey
+    private AuditoriaBasica auditoria;    
+    
     public Encabezado() {
     }
 
@@ -120,4 +130,21 @@ public class Encabezado extends BeanVO implements Serializable {
     public void setRif2(String rif2) {
         this.rif2 = rif2;
     }
+
+    /**
+     * Datos de auditado de modificaciones en la tabla
+     * @return the auditoria
+     */
+    public AuditoriaBasica getAuditoria() {
+        return auditoria;
+    }
+
+    /**
+     * Datos de auditado de modificaciones en la tabla
+     * @param auditoria the auditoria to set
+     */
+    public void setAuditoria(AuditoriaBasica auditoria) {
+        this.auditoria = auditoria;
+    }
+    
 }

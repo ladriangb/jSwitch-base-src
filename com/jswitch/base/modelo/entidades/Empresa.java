@@ -9,6 +9,13 @@ import javax.persistence.Id;
 import com.jswitch.base.modelo.util.bean.BeanVO;
 import com.jswitch.base.modelo.util.ehts.BusinessKey;
 import com.jswitch.base.modelo.util.ehts.Method;
+import com.jswitch.persona.modelo.transac.CuentaBancariaPersona;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import org.hibernate.validator.constraints.Email;
@@ -31,7 +38,6 @@ public class Empresa extends BeanVO implements Serializable {
     @Column
     @BusinessKey(include = Method.TO_STRING)
     private Long id;
-
     /**
      *
      */
@@ -114,6 +120,17 @@ public class Empresa extends BeanVO implements Serializable {
      */
     @Column
     private Integer usosDisponibles;
+    /**
+     * Encabesado de los Reportes
+     */
+    @ManyToOne
+    private Encabezado encabezado;   
+    /**
+     * Coleccion de cuentas bancarias de la empresa
+     */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @BusinessKey(exclude = Method.ALL)
+    private Set<CuentaBancariaPersona> cuentasBancarias = new HashSet<CuentaBancariaPersona>(0);    
     /**
      *
      */
@@ -256,4 +273,37 @@ public class Empresa extends BeanVO implements Serializable {
     public void setUsosDisponibles(Integer usosDisponibles) {
         this.usosDisponibles = usosDisponibles;
     }
+
+    /**
+     * Encabesado de los Reportes
+     * @return the encabezado
+     */
+    public Encabezado getEncabezado() {
+        return encabezado;
+    }
+
+    /**
+     * Encabesado de los Reportes
+     * @param encabezado the encabezado to set
+     */
+    public void setEncabezado(Encabezado encabezado) {
+        this.encabezado = encabezado;
+    }
+
+    /**
+     * Coleccion de cuentas bancarias de la empresa
+     * @return the cuentasBancarias
+     */
+    public Set<CuentaBancariaPersona> getCuentasBancarias() {
+        return cuentasBancarias;
+    }
+
+    /**
+     * Coleccion de cuentas bancarias de la empresa
+     * @param cuentasBancarias the cuentasBancarias to set
+     */
+    public void setCuentasBancarias(Set<CuentaBancariaPersona> cuentasBancarias) {
+        this.cuentasBancarias = cuentasBancarias;
+    }
+            
 }
