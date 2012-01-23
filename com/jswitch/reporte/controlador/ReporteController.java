@@ -43,7 +43,9 @@ import com.jswitch.persona.vista.Personas2GridFrame;
 import com.jswitch.base.vista.util.DefaultGridFrame;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
 import net.sf.jasperreports.view.JasperViewer;
+import org.hibernate.Transaction;
 import org.openswing.swing.util.server.HibernateUtils;
 
 /**
@@ -102,9 +104,8 @@ public class ReporteController extends DefaultGridFrameController implements Act
                     parameters.put("empresaRif", encabezado.getRif2());
                     parameters.put("empresaLogo", getIcon(encabezado.getImagen()));
                     parameters.put("empresaObservacion", encabezado.getObservacion());
+                    
                 }
-
-
                 JasperPrint jasperPrint = null;
 
                 if (reporte.getEnviarData()) {
@@ -113,12 +114,16 @@ public class ReporteController extends DefaultGridFrameController implements Act
                             new JRBeanCollectionDataSource(dataSource, reporte.getUseFieldDescription()));
                 } else if (reporte.getHql()) {
                     Session s = null;
+                    Transaction transaction=null;
                     try {
                         s = HibernateUtil.getSessionFactory().openSession();
-                        parameters.put("HIBERNATE_SESSION", s);
+                        transaction  = s.beginTransaction();
+                        parameters.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, s);
+                        //parameters.put("HIBERNATE_SESSION", s);
                         jasperPrint = JasperFillManager.fillReport(
                                 rutaReporte, parameters);
                     } finally {
+                        transaction.rollback();
                         s.close();
                     }
                 } else if (!reporte.getHql()) {
@@ -197,18 +202,23 @@ public class ReporteController extends DefaultGridFrameController implements Act
                 }
             }
         } else {
-            //System.out.println("else");
-            Session s = null;
-            try {
-                s = HibernateUtil.getSessionFactory().openSession();
-                List dataSource = s.createQuery(reporte.getBaseSQL()).list();
-                mostrarReporte(dataSource,
+            if (reporte.getEnviarData()) {
+                Session s = null;
+                try {
+                    s = HibernateUtil.getSessionFactory().openSession();
+                    List dataSource = s.createQuery(reporte.getBaseSQL()).list();
+                    mostrarReporte(dataSource,
+                            new ArrayList<ParametroReporte>(0),
+                            reporte, estilo);
+                } catch (Exception ex) {
+                    LoggerUtil.error(this.getClass(), "showReport", ex);
+                } finally {
+                    s.close();
+                }
+            } else {
+                mostrarReporte(Collections.EMPTY_LIST,
                         new ArrayList<ParametroReporte>(0),
                         reporte, estilo);
-            } catch (Exception ex) {
-                LoggerUtil.error(this.getClass(), "showReport", ex);
-            } finally {
-                s.close();
             }
         }
     }
