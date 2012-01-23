@@ -88,7 +88,7 @@ public class DefaultDetailFrameController extends FormController implements Acti
             vista.saveGridsData();
             s = HibernateUtil.getSessionFactory().openSession();
             //s = HibernateUtil.getSessionFactory().openSession();
-            Transaction t = s.beginTransaction();
+            Transaction t = s.beginTransaction(); 
             if (newPersistentObject instanceof Auditable) {
                 AuditoriaBasica ab = new AuditoriaBasica(new Date(), General.usuario.getUserName(), true);
                 ((Auditable) newPersistentObject).setAuditoria(ab);
