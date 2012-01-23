@@ -63,7 +63,7 @@ public class ReporteController extends DefaultGridFrameController implements Act
 
     public void mostrarReporte(List dataSource, ArrayList<ParametroReporte> parametrosFiltro,
             Reporte reporte, String estilo2) {
-        if (reporte.getEnviarData() && (dataSource==null || dataSource.isEmpty())) {
+        if (reporte.getEnviarData() && (dataSource == null || dataSource.isEmpty())) {
             JOptionPane.showMessageDialog(MDIFrame.getInstance(), "El documento no tiene paginas.");
         } else {
             for (ParametroReporte parametro : parametrosFiltro) {
@@ -110,7 +110,7 @@ public class ReporteController extends DefaultGridFrameController implements Act
                 if (reporte.getEnviarData()) {
                     jasperPrint = JasperFillManager.fillReport(
                             rutaReporte, parameters,
-                            new JRBeanCollectionDataSource(dataSource));
+                            new JRBeanCollectionDataSource(dataSource, reporte.getUseFieldDescription()));
                 } else if (reporte.getHql()) {
                     Session s = null;
                     try {
