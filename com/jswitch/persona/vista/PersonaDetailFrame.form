@@ -91,7 +91,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="barraNatural" min="-2" max="-2" attributes="0"/>
+                      <Component id="barraNatural" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="formNatu" min="-2" pref="365" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1065,7 +1065,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="barraJuridica" min="-2" max="-2" attributes="0"/>
+                      <Component id="barraJuridica" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="formJuri" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1324,7 +1324,7 @@
                     <Component class="org.openswing.swing.client.TextControl" name="textControl20">
                       <Properties>
                         <Property name="attributeName" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="&quot;rif.cedulaCompleta&quot;" type="code"/>
+                          <Connection code="&quot;rif.rif&quot;" type="code"/>
                         </Property>
                         <Property name="enabledOnEdit" type="boolean" value="false"/>
                         <Property name="enabledOnInsert" type="boolean" value="false"/>

@@ -11,7 +11,6 @@ import com.jswitch.base.controlador.documentosAnexos.TipoDocumentoLookupControll
 import com.jswitch.base.controlador.helpcenter.CorreoDetailFrameController;
 import com.jswitch.base.controlador.util.DefaultDocumentosAnexosGridController;
 import com.jswitch.base.controlador.util.DefaultGridInternalController;
-import java.awt.event.ActionListener;
 import java.net.URI;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -975,7 +974,7 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
 
         labelControl27.setLabel("cedula");
 
-        textControl20.setAttributeName("rif.cedulaCompleta");
+        textControl20.setAttributeName("rif.rif");
         textControl20.setEnabledOnEdit(false);
         textControl20.setEnabledOnInsert(false);
         textControl20.setRequired(true);
