@@ -58,10 +58,10 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tipoCedula" alignment="0" pref="169" max="32767" attributes="0"/>
-                              <Component id="textControl1" alignment="0" pref="169" max="32767" attributes="0"/>
+                              <Component id="tipoCedula" alignment="0" pref="212" max="32767" attributes="0"/>
+                              <Component id="textControl1" alignment="0" pref="212" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="numericControl2" pref="116" max="32767" attributes="0"/>
+                                  <Component id="numericControl2" pref="186" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="labelControl2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -79,7 +79,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="labelControl3" linkSize="2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="textControl2" pref="169" max="32767" attributes="0"/>
+                          <Component id="textControl2" pref="212" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>

@@ -401,6 +401,7 @@ public class RifDialog extends javax.swing.JDialog {
             } else {
                 ok = true;
                 rif = (Rif) newPersistentObject;
+                rif.setTipoCedula((TipoCedula)tipoCedula.getValue());
                 RifDialog.this.dispose();
                 if (!editarRegistro) {
                     new PersonasDetailController(linkForm, linkAttName, adicional, null, null, getRif());
