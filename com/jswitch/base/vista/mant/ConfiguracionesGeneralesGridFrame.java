@@ -93,6 +93,7 @@ public class ConfiguracionesGeneralesGridFrame extends DefaultGridFrame {
         decimalColumn1.setEditableOnEdit(true);
         decimalColumn1.setEditableOnInsert(true);
         decimalColumn1.setPreferredWidth(50);
+        decimalColumn1.setSortVersus(org.openswing.swing.util.java.Consts.DESC_SORTED);
         gridData.getColumnContainer().add(decimalColumn1);
 
         textColumn1.setColumnFilterable(true);
@@ -211,7 +212,7 @@ public class ConfiguracionesGeneralesGridFrame extends DefaultGridFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
