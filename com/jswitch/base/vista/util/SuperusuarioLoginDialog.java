@@ -32,34 +32,38 @@ import org.openswing.swing.util.client.ClientUtils;
  */
 public class SuperusuarioLoginDialog extends JDialog {
 
-    private Component componente=null;
-    private boolean correcto=false;
+    private Component componente = null;
+    private boolean correcto = false;
 
+    /** Creates new form SuperusuarioLoginDialog */
     public SuperusuarioLoginDialog() {
         super(MDIFrame.getInstance(), true);
         initComponents();
         jButton1.addActionListener(new LoginSuper());
         jButton1.setFocusPainted(true);
+        this.getRootPane().setDefaultButton(jButton1);
+        ClientUtils.centerDialog(MDIFrame.getInstance(), this);
+        setVisible(true);
+    }
+     /** Creates new form SuperusuarioLoginDialog 
+     * @param title Titulo de la pantalla 
+     */
+    public SuperusuarioLoginDialog(String title) {
+        super(MDIFrame.getInstance(),title, true);
+        initComponents();
+        jButton1.addActionListener(new LoginSuper());
+        jButton1.setFocusPainted(true);
+        this.getRootPane().setDefaultButton(jButton1);
         ClientUtils.centerDialog(MDIFrame.getInstance(), this);
         setVisible(true);
     }
 
-    /** Creates new form SuperusuarioLoginDialog */
-
-    public SuperusuarioLoginDialog(Component componente) {
-        super(MDIFrame.getInstance(), true);
-        this.componente = componente;
-        initComponents();
-
-        jButton1.addActionListener(new LoginSuper());
-        jButton1.setFocusPainted(true);
-    }
-
-    public static boolean VerificarSuperusuario()
-    {
+    public static boolean VerificarSuperusuario() {
         return new SuperusuarioLoginDialog().isCorrecto();
     }
-
+    public static boolean VerificarSuperusuario(String title) {
+        return new SuperusuarioLoginDialog(title).isCorrecto();
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -227,12 +231,12 @@ public class SuperusuarioLoginDialog extends JDialog {
             m.put("password", jPasswordField1.getText());
 
             if (authenticateUser(m)) {
-                correcto=true;
-                
+                correcto = true;
+
                 if (componente != null) {
                     componente.setVisible(true);
-                }                
-                
+                }
+
                 SuperusuarioLoginDialog.this.dispose();
             }
         }
@@ -241,5 +245,4 @@ public class SuperusuarioLoginDialog extends JDialog {
     public boolean isCorrecto() {
         return correcto;
     }
-
 }

@@ -163,9 +163,12 @@
       <SubComponents>
         <Component class="org.openswing.swing.table.columns.client.DecimalColumn" name="decimalColumn1">
           <Properties>
+            <Property name="columnFilterable" type="boolean" value="true"/>
             <Property name="columnName" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;id&quot;" type="code"/>
             </Property>
+            <Property name="columnRequired" type="boolean" value="false"/>
+            <Property name="columnSortable" type="boolean" value="true"/>
             <Property name="preferredWidth" type="int" value="40"/>
             <Property name="sortVersus" type="java.lang.String" value="DESC"/>
           </Properties>
@@ -176,6 +179,7 @@
             <Property name="columnName" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;rif.rif&quot;" type="code"/>
             </Property>
+            <Property name="columnRequired" type="boolean" value="false"/>
             <Property name="columnSortable" type="boolean" value="true"/>
           </Properties>
         </Component>
@@ -185,6 +189,7 @@
             <Property name="columnName" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="&quot;nombreLargo&quot;" type="code"/>
             </Property>
+            <Property name="columnRequired" type="boolean" value="false"/>
             <Property name="columnSortable" type="boolean" value="true"/>
             <Property name="preferredWidth" type="int" value="300"/>
           </Properties>

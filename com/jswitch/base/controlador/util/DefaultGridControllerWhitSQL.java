@@ -19,9 +19,9 @@ import com.jswitch.base.vista.util.DefaultGridFrame;
  */
 public class DefaultGridControllerWhitSQL extends DefaultGridFrameController {
 
-    private Object values[];
-    private Type valueTypes[];
-    private String sql;
+    protected Object values[];
+    protected Type valueTypes[];
+    protected String sql;
 
     public DefaultGridControllerWhitSQL(String gridFramePath, String detailFramePath, String claseModeloFullPath, String titulo, String sql, Object[] values, Type[] valueType) {
         this.valueTypes = valueType;

@@ -125,18 +125,23 @@ public class Personas2GridFrame extends DefaultGridFrame {
         gridData.setSaveButton(saveButton1);
         gridData.setValueObjectClassName(com.jswitch.persona.modelo.maestra.Persona.class.getName());
 
+        decimalColumn1.setColumnFilterable(true);
         decimalColumn1.setColumnName("id");
+        decimalColumn1.setColumnRequired(false);
+        decimalColumn1.setColumnSortable(true);
         decimalColumn1.setPreferredWidth(40);
         decimalColumn1.setSortVersus(org.openswing.swing.util.java.Consts.DESC_SORTED);
         gridData.getColumnContainer().add(decimalColumn1);
 
         textColumn6.setColumnFilterable(true);
         textColumn6.setColumnName("rif.rif");
+        textColumn6.setColumnRequired(false);
         textColumn6.setColumnSortable(true);
         gridData.getColumnContainer().add(textColumn6);
 
         textColumn1.setColumnFilterable(true);
         textColumn1.setColumnName("nombreLargo");
+        textColumn1.setColumnRequired(false);
         textColumn1.setColumnSortable(true);
         textColumn1.setPreferredWidth(300);
         gridData.getColumnContainer().add(textColumn1);

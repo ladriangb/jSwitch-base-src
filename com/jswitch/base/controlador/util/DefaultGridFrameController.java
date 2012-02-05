@@ -195,7 +195,6 @@ public class DefaultGridFrameController extends GridController implements GridDa
         gridFrame.setOwnerVO((BeanVO) gridFrame.getGridControl().getVOListTableModel().getObjectForRow(0));
     }
 
-    //TODO para el grid de liquidaciones implementar este metodo propio
     @Override
     public void doubleClick(int rowNumber, ValueObject persistentObject) {
         if (detailFramePath != null) {
