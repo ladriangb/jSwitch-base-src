@@ -25,7 +25,7 @@ import javax.validation.constraints.Size;
  * @author Nelson Moncada
  */
 @Entity
-@Table(name="PERS_TipoCuentaBancaria")
+@Table(name = "PERS_TipoCuentaBancaria")
 public class TipoCuentaBancaria extends BeanVO implements Serializable, Auditable {
 
     /**
@@ -50,7 +50,6 @@ public class TipoCuentaBancaria extends BeanVO implements Serializable, Auditabl
     @Size(min = 2, max = 2)
     @BusinessKey
     private String numero;
-        
     /**
      */
     @Version
@@ -67,6 +66,12 @@ public class TipoCuentaBancaria extends BeanVO implements Serializable, Auditabl
 
     public TipoCuentaBancaria(String nombre, AuditoriaBasica auditoria) {
         this.nombre = nombre;
+        this.auditoria = auditoria;
+    }
+
+    public TipoCuentaBancaria(String nombre, String numero, AuditoriaBasica auditoria) {
+        this.nombre = nombre;
+        this.numero = numero;
         this.auditoria = auditoria;
     }
 
@@ -109,6 +114,4 @@ public class TipoCuentaBancaria extends BeanVO implements Serializable, Auditabl
     public void setNumero(String numero) {
         this.numero = numero;
     }
-
-    
 }

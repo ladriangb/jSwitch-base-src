@@ -11,6 +11,8 @@ import org.openswing.swing.mdi.client.MDIFrame;
 import com.jswitch.base.modelo.entidades.Empresa;
 import com.jswitch.base.modelo.entidades.Encabezado;
 import com.jswitch.base.vista.util.DefaultDetailFrame;
+import com.jswitch.persona.controlador.PersonaLookupController;
+import com.jswitch.persona.modelo.dominio.TipoCuentaBancaria;
 import com.jswitch.persona.modelo.transac.CuentaBancariaPersona;
 
 /**
@@ -64,7 +66,6 @@ public class EmpresaDetailFrame extends DefaultDetailFrame {
         saveButton3 = new org.openswing.swing.client.SaveButton();
         reloadButton3 = new org.openswing.swing.client.ReloadButton();
         filterButton3 = new org.openswing.swing.client.FilterButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
 
         setTitle("Empresa");
 
@@ -191,7 +192,7 @@ public class EmpresaDetailFrame extends DefaultDetailFrame {
                 .addGroup(form1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelControl9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(codLookupControl1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         form1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {labelControl1, labelControl2, labelControl4, labelControl5, labelControl7, labelControl8, labelControl9, textControl1, textControl2, textControl4, textControl5, textControl7, textControl8});
@@ -200,7 +201,13 @@ public class EmpresaDetailFrame extends DefaultDetailFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Cuentas Bancarias"));
 
+        gridControl1.setDeleteButton(deleteButton3);
+        gridControl1.setEditButton(editButton3);
+        gridControl1.setFilterButton(filterButton3);
+        gridControl1.setInsertButton(insertButton3);
         gridControl1.setMaxNumberOfRowsOnInsert(4);
+        gridControl1.setReloadButton(reloadButton3);
+        gridControl1.setSaveButton(saveButton3);
         gridControl1.setValueObjectClassName(CuentaBancariaPersona.class.getName());
         gridControl1.setVisibleStatusPanel(false);
 
@@ -250,27 +257,20 @@ public class EmpresaDetailFrame extends DefaultDetailFrame {
         jPanel6.add(reloadButton3);
         jPanel6.add(filterButton3);
 
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gridControl1, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE))
+                .addComponent(gridControl1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(gridControl1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
         );
 
@@ -287,12 +287,12 @@ public class EmpresaDetailFrame extends DefaultDetailFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 209, Short.MAX_VALUE)
+            .addGap(0, 213, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 17, Short.MAX_VALUE)
+                    .addGap(0, 19, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 17, Short.MAX_VALUE)))
+                    .addGap(0, 19, Short.MAX_VALUE)))
         );
 
         jTabbedPane2.addTab("Cuentas Bancarias", jPanel2);
@@ -312,16 +312,12 @@ public class EmpresaDetailFrame extends DefaultDetailFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-    jPanel6.setVisible(!jPanel6.isVisible());
-}//GEN-LAST:event_jToggleButton1ActionPerformed
 
     @Override
     public void inicializar(FormController formController, boolean addToMDIFrame) {
@@ -336,8 +332,17 @@ private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GE
         DefaultLookupControllerPorNombre lookupEncabezado = new DefaultLookupControllerPorNombre(
                 Encabezado.class.getName());
         lookupEncabezado.addLookup2ParentLink("encabezado");
-        codLookupControl1.setLookupController(lookupEncabezado);        
+        codLookupControl1.setLookupController(lookupEncabezado);
         
+        PersonaLookupController lookupBanco = new PersonaLookupController("BAN");
+        lookupBanco.addLookup2ParentLink("banco");
+        codLookupColumn1.setLookupController(lookupBanco);
+
+        DefaultLookupController lookupTipoCuentaBancaria = new DefaultLookupController(
+                TipoCuentaBancaria.class.getName());
+        lookupTipoCuentaBancaria.addLookup2ParentLink("tipoCuenta");
+        codLookupColumn3.setLookupController(lookupTipoCuentaBancaria);
+
         controllerCuentasBancarias =
                 new DefaultGridInternalController(Empresa.class.getName(), "getCuentasBancarias", gridControl1);
         gridControl1.setGridDataLocator(controllerCuentasBancarias);
@@ -368,6 +373,9 @@ private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GE
 
     @Override
     public void setOwnerVO(BeanVO beanVO) {
+        if (beanVO != null) {
+            controllerCuentasBancarias.setBeanVO(beanVO);
+        }
     }
 
     @Override
@@ -397,7 +405,6 @@ private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GE
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JToggleButton jToggleButton1;
     private org.openswing.swing.client.LabelControl labelControl1;
     private org.openswing.swing.client.LabelControl labelControl2;
     private org.openswing.swing.client.LabelControl labelControl4;
