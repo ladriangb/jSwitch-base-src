@@ -44,7 +44,7 @@ public class DefaultGridInternalController extends GridController implements Gri
 
     public DefaultGridInternalController(GridControl miGrid) {
         this.listSubGrids = null;
-        this.miGrid = null;
+        this.miGrid = miGrid;
     }
 
     public DefaultGridInternalController(String classNameModelFullPath, String getMethodName, GridControl miGrid, DefaultGridInternalController... listSubGrids) {

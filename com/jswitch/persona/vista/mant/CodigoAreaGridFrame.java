@@ -90,6 +90,8 @@ public class CodigoAreaGridFrame extends DefaultGridFrame {
         textColumn1.setEditableOnInsert(true);
         textColumn1.setMaxCharacters(100);
         textColumn1.setPreferredWidth(170);
+        textColumn1.setTrimText(true);
+        textColumn1.setUpperCase(true);
         gridData.getColumnContainer().add(textColumn1);
 
         textColumn4.setColumnName("numero");
@@ -134,7 +136,7 @@ public class CodigoAreaGridFrame extends DefaultGridFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
