@@ -510,10 +510,11 @@ public class Dominios {
 
     public static enum CategoriaReporte {
 
-        PERSONAS, REMESA, SINIESTROS ,x1
+        PERSONAS, POLIZAS, RECIBOS, ASEGURADOS, SINIESTROS, PAGOS, AUDITORIAS, REMESAS,
+        x1
     }
 
-    public static Domain CategoriaReporte() {// Listo
+    public static Domain CategoriaReporte() {
         Domain dominio = new Domain("CategoriaReporte");
         CategoriaReporte o[] = CategoriaReporte.values();
         for (int i = 0; i

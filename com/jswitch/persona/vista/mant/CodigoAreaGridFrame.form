@@ -32,7 +32,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="gridData" pref="308" max="32767" attributes="0"/>
+              <Component id="gridData" pref="312" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -138,6 +138,8 @@
             <Property name="editableOnInsert" type="boolean" value="true"/>
             <Property name="maxCharacters" type="int" value="100"/>
             <Property name="preferredWidth" type="int" value="170"/>
+            <Property name="trimText" type="boolean" value="true"/>
+            <Property name="upperCase" type="boolean" value="true"/>
           </Properties>
         </Component>
         <Component class="org.openswing.swing.table.columns.client.TextColumn" name="textColumn4">
