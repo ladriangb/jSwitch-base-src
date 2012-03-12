@@ -89,6 +89,7 @@ public class ReporteController extends DefaultGridFrameController implements Act
                 parameters.put("reporteTitulo", reporte.getTitulo());
                 parameters.put("reporteFile", reporte.getFile());
                 parameters.put("reporteEstilo", estilo2);
+                 parameters.put("draco", getIcon("draco_Report"));
                 parameters.put("reporteParametros", parametrosFiltro);
                 parameters.put("usuario", General.usuario.getUserName());
                 parameters.put("oficina", General.oficina.getNombre());
@@ -292,6 +293,7 @@ public class ReporteController extends DefaultGridFrameController implements Act
     }
 
     public static Image getIcon(String img) {
+        System.out.println(img);
         Image i = icons.get(img);
         if (i == null) {
             try {
@@ -315,7 +317,7 @@ public class ReporteController extends DefaultGridFrameController implements Act
         List<String> list = new ArrayList<String>();
         Collections.sort(list);
 
-
+        System.out.println(i);
         return i;
     }
 

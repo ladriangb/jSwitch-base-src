@@ -83,6 +83,7 @@ public class DefaultMantenimientoGridFrame extends DefaultGridFrame {
         decimalColumn1.setColumnFilterable(true);
         decimalColumn1.setColumnName("id");
         decimalColumn1.setColumnRequired(false);
+        decimalColumn1.setGrouping(false);
         decimalColumn1.setPreferredWidth(50);
         decimalColumn1.setSortVersus(org.openswing.swing.util.java.Consts.DESC_SORTED);
         gridData.getColumnContainer().add(decimalColumn1);
@@ -131,7 +132,7 @@ public class DefaultMantenimientoGridFrame extends DefaultGridFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

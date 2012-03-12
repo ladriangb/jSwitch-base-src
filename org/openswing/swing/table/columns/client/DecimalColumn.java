@@ -53,7 +53,7 @@ public class DecimalColumn extends Column {
   private int decimals = 0;
 
   /** flag used to set thousands symbol visibility */
-  private boolean grouping = true;
+  private boolean grouping = false;
 
   /** dynamic settings used to reset numeric editor properties for each grid row */
   private DecimalColumnSettings dynamicSettings = null;

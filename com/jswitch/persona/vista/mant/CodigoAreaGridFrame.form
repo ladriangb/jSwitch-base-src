@@ -32,7 +32,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="gridData" pref="312" max="32767" attributes="0"/>
+              <Component id="gridData" pref="316" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -123,6 +123,9 @@
               <Connection code="&quot;id&quot;" type="code"/>
             </Property>
             <Property name="columnRequired" type="boolean" value="false"/>
+            <Property name="grouping" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="false" type="code"/>
+            </Property>
             <Property name="preferredWidth" type="int" value="50"/>
             <Property name="sortVersus" type="java.lang.String" value="DESC"/>
           </Properties>

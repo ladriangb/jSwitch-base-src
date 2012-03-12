@@ -79,6 +79,7 @@ public class CodigoAreaGridFrame extends DefaultGridFrame {
 
         integerColumn1.setColumnName("id");
         integerColumn1.setColumnRequired(false);
+        integerColumn1.setGrouping(false);
         integerColumn1.setPreferredWidth(50);
         integerColumn1.setSortVersus(org.openswing.swing.util.java.Consts.DESC_SORTED);
         gridData.getColumnContainer().add(integerColumn1);
@@ -136,7 +137,7 @@ public class CodigoAreaGridFrame extends DefaultGridFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

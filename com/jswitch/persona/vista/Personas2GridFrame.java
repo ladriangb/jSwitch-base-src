@@ -16,6 +16,8 @@ import org.openswing.swing.mdi.client.MDIFrame;
 import org.openswing.swing.table.client.GridController;
 import org.openswing.swing.table.java.GridDataLocator;
 import com.jswitch.base.vista.util.DefaultGridFrame;
+import org.openswing.swing.client.FilterPanelOnGridPolicyEditor;
+import org.openswing.swing.table.filter.client.FilterPanel;
 
 /**
  *
@@ -129,6 +131,7 @@ public class Personas2GridFrame extends DefaultGridFrame {
         decimalColumn1.setColumnName("id");
         decimalColumn1.setColumnRequired(false);
         decimalColumn1.setColumnSortable(true);
+        decimalColumn1.setGrouping(false);
         decimalColumn1.setPreferredWidth(40);
         decimalColumn1.setSortVersus(org.openswing.swing.util.java.Consts.DESC_SORTED);
         gridData.getColumnContainer().add(decimalColumn1);

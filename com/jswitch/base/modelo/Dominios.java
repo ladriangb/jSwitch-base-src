@@ -510,7 +510,7 @@ public class Dominios {
 
     public static enum CategoriaReporte {
 
-        PERSONAS, POLIZAS, RECIBOS, ASEGURADOS, SINIESTROS, PAGOS, AUDITORIAS, REMESAS,
+        PERSONAS, POLIZAS, RECIBOS, ASEGURADOS, SINIESTROS, PAGOS, AUDITORIAS, REMESAS, CERTIFICADOS,
         x1
     }
 
