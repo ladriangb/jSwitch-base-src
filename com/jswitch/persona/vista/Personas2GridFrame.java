@@ -36,13 +36,9 @@ public class Personas2GridFrame extends DefaultGridFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        insertButton1 = new org.openswing.swing.client.InsertButton();
-        deleteButton1 = new org.openswing.swing.client.DeleteButton();
         reloadButton1 = new org.openswing.swing.client.ReloadButton();
         exportButton1 = new org.openswing.swing.client.ExportButton();
         navigatorBar1 = new org.openswing.swing.client.NavigatorBar();
-        filterButton1 = new org.openswing.swing.client.FilterButton();
-        editButton1 = new org.openswing.swing.client.EditButton();
         saveButton1 = new org.openswing.swing.client.SaveButton();
         jButton1 = new javax.swing.JButton();
         gridData = new org.openswing.swing.client.GridControl();
@@ -61,12 +57,6 @@ public class Personas2GridFrame extends DefaultGridFrame {
         setTitle("Personas");
         setPreferredSize(new java.awt.Dimension(700, 540));
 
-        insertButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertButton1ActionPerformed(evt);
-            }
-        });
-
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/filter2.png"))); // NOI18N
         jButton1.setText("Tipo Persona");
         jButton1.setPreferredSize(new java.awt.Dimension(120, 33));
@@ -81,12 +71,7 @@ public class Personas2GridFrame extends DefaultGridFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(insertButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(editButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addContainerGap()
                 .addComponent(saveButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(reloadButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -95,32 +80,23 @@ public class Personas2GridFrame extends DefaultGridFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(navigatorBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filterButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(filterButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(navigatorBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(exportButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(reloadButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reloadButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        gridData.setDeleteButton(deleteButton1);
-        gridData.setEditButton(editButton1);
         gridData.setExportButton(exportButton1);
-        gridData.setFilterButton(filterButton1);
         gridData.setFunctionId("PersonasGrid");
         gridData.setNavBar(navigatorBar1);
         gridData.setReloadButton(reloadButton1);
@@ -216,14 +192,10 @@ public class Personas2GridFrame extends DefaultGridFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void insertButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButton1ActionPerformed
-         new RifDialog();        
-    }//GEN-LAST:event_insertButton1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (tpd == null) {
@@ -236,9 +208,7 @@ public class Personas2GridFrame extends DefaultGridFrame {
         }
         if (tipoPersonaFiltro != null && tipoPersonaFiltro.size() != 0) {
             jButton1.setBackground(Color.GREEN);
-        } else {
-            jButton1.setBackground(insertButton1.getBackground());
-        }
+        } 
 }//GEN-LAST:event_jButton1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.openswing.swing.table.columns.client.CheckBoxColumn checkBoxColumn1;
@@ -247,12 +217,8 @@ public class Personas2GridFrame extends DefaultGridFrame {
     private org.openswing.swing.table.columns.client.DateTimeColumn dateTimeColumn1;
     private org.openswing.swing.table.columns.client.DateTimeColumn dateTimeColumn2;
     private org.openswing.swing.table.columns.client.DecimalColumn decimalColumn1;
-    private org.openswing.swing.client.DeleteButton deleteButton1;
-    private org.openswing.swing.client.EditButton editButton1;
     private org.openswing.swing.client.ExportButton exportButton1;
-    private org.openswing.swing.client.FilterButton filterButton1;
     private org.openswing.swing.client.GridControl gridData;
-    private org.openswing.swing.client.InsertButton insertButton1;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private org.openswing.swing.client.NavigatorBar navigatorBar1;

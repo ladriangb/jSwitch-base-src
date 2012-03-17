@@ -293,7 +293,6 @@ public class ReporteController extends DefaultGridFrameController implements Act
     }
 
     public static Image getIcon(String img) {
-        System.out.println(img);
         Image i = icons.get(img);
         if (i == null) {
             try {
@@ -317,7 +316,6 @@ public class ReporteController extends DefaultGridFrameController implements Act
         List<String> list = new ArrayList<String>();
         Collections.sort(list);
 
-        System.out.println(i);
         return i;
     }
 

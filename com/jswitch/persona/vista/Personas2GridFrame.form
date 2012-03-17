@@ -40,7 +40,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="gridData" pref="434" max="32767" attributes="0"/>
+              <Component id="gridData" pref="433" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -53,12 +53,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="insertButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  <Component id="editButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="deleteButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Component id="saveButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="reloadButton1" min="-2" max="-2" attributes="0"/>
@@ -67,27 +62,21 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="navigatorBar1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="filterButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="80" max="32767" attributes="0"/>
+                  <EmptySpace pref="222" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="filterButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="navigatorBar1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="saveButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="editButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="exportButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="reloadButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="deleteButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="insertButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -95,22 +84,11 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="org.openswing.swing.client.InsertButton" name="insertButton1">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertButton1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="org.openswing.swing.client.DeleteButton" name="deleteButton1">
-        </Component>
         <Component class="org.openswing.swing.client.ReloadButton" name="reloadButton1">
         </Component>
         <Component class="org.openswing.swing.client.ExportButton" name="exportButton1">
         </Component>
         <Component class="org.openswing.swing.client.NavigatorBar" name="navigatorBar1">
-        </Component>
-        <Component class="org.openswing.swing.client.FilterButton" name="filterButton1">
-        </Component>
-        <Component class="org.openswing.swing.client.EditButton" name="editButton1">
         </Component>
         <Component class="org.openswing.swing.client.SaveButton" name="saveButton1">
         </Component>
@@ -133,16 +111,16 @@
     <Container class="org.openswing.swing.client.GridControl" name="gridData">
       <Properties>
         <Property name="deleteButton" type="org.openswing.swing.client.DeleteButton" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="deleteButton1"/>
+          <ComponentRef name="default"/>
         </Property>
         <Property name="editButton" type="org.openswing.swing.client.EditButton" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="editButton1"/>
+          <ComponentRef name="default"/>
         </Property>
         <Property name="exportButton" type="org.openswing.swing.client.ExportButton" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="exportButton1"/>
         </Property>
         <Property name="filterButton" type="org.openswing.swing.client.FilterButton" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="filterButton1"/>
+          <ComponentRef name="default"/>
         </Property>
         <Property name="functionId" type="java.lang.String" value="PersonasGrid"/>
         <Property name="navBar" type="org.openswing.swing.client.NavigatorBar" editor="org.netbeans.modules.form.ComponentChooserEditor">
