@@ -20,12 +20,12 @@ import javax.validation.constraints.Size;
  * @author bc
  */
 @Entity
-@Table(name="SYST_Encabezado")
+@Table(name = "SYST_Encabezado")
 public class Encabezado extends BeanVO implements Auditable {
     //TODO incluir a la persona que es de tipo productor para obtener sus datos
 
     /**
-     *  PK autoincremtado
+     * PK autoincremtado
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,6 +39,13 @@ public class Encabezado extends BeanVO implements Auditable {
     @BusinessKey
     private String nombre;
     /**
+     * Ciudad donde se encuentra la sucursal
+     */
+    @Column
+    @Size(min = 4, max = 120)
+    @BusinessKey
+    private String cuidad;
+    /**
      */
     @Column
     @BusinessKey
@@ -49,7 +56,7 @@ public class Encabezado extends BeanVO implements Auditable {
     @BusinessKey
     private String imagen;
     /**
-     * 
+     *
      */
     @Column
     @BusinessKey
@@ -63,14 +70,13 @@ public class Encabezado extends BeanVO implements Auditable {
     @Version
     @Column
     private Integer optLock;
-
     /**
      * Datos de auditado de modificaciones en la tabla
      */
     @Embedded
     @BusinessKey
-    private AuditoriaBasica auditoria;    
-    
+    private AuditoriaBasica auditoria;
+
     public Encabezado() {
     }
 
@@ -132,6 +138,7 @@ public class Encabezado extends BeanVO implements Auditable {
 
     /**
      * Datos de auditado de modificaciones en la tabla
+     *
      * @return the auditoria
      */
     public AuditoriaBasica getAuditoria() {
@@ -140,10 +147,27 @@ public class Encabezado extends BeanVO implements Auditable {
 
     /**
      * Datos de auditado de modificaciones en la tabla
+     *
      * @param auditoria the auditoria to set
      */
     public void setAuditoria(AuditoriaBasica auditoria) {
         this.auditoria = auditoria;
     }
-    
+
+    /**
+     * Ciudad donde se encuentra la sucursal
+     * @return the cuidad
+     */
+    public String getCuidad() {
+        return cuidad;
+    }
+
+    /**
+     * Ciudad donde se encuentra la sucursal
+     * @param cuidad the cuidad to set
+     */
+    public void setCuidad(String cuidad) {
+        this.cuidad = cuidad;
+    }
+        
 }
