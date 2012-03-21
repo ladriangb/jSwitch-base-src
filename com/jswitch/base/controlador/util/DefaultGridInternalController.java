@@ -14,6 +14,7 @@ import com.jswitch.base.modelo.entidades.auditoria.AuditoriaBasica;
 import com.jswitch.base.modelo.util.bean.BeanVO;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
+import org.hibernate.transform.AliasedTupleSRT;
 import org.openswing.swing.client.GridControl;
 import org.openswing.swing.client.OptionPane;
 import org.openswing.swing.mdi.client.MDIFrame;
@@ -126,7 +127,7 @@ public class DefaultGridInternalController extends GridController implements Gri
                 if (o instanceof Auditable) {
                     ((Auditable) o).setAuditoria(ab);
                 }
-                Object aux=o.clone();
+                Object aux = o.clone();
                 //n2.add(aux);
                 newValueObjects.remove(o);
                 newValueObjects.add(aux);

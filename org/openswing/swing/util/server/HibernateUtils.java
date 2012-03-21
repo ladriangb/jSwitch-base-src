@@ -16,6 +16,8 @@ import org.hibernate.FetchMode;
 import org.hibernate.criterion.Restrictions;
 import org.openswing.swing.util.java.Consts;
 import org.hibernate.criterion.Order;
+import org.hibernate.transform.AliasedTupleSRT;
+import org.hibernate.transform.ResultTransformer;
 
 /**
  * <p>Title: OpenSwing Framework</p>
@@ -781,7 +783,7 @@ public class HibernateUtils {
             String tableName,
             SessionFactory sessions,
             Session sess) throws Exception {
-        return getBlockFromQuery(
+        return getBlockFromQuery(null,
                 new HashMap(),
                 action,
                 startIndex,
@@ -841,6 +843,56 @@ public class HibernateUtils {
 
     /**
      * Read a block of records from the result set, by applying filtering and sorting conditions + query parameters.
+     * @param resultClass The class on which the property is defined.
+     * @param action fetching versus: PREVIOUS_BLOCK_ACTION, NEXT_BLOCK_ACTION or LAST_BLOCK_ACTION
+     * @param startPos start position of data fetching in result set
+     * @param blockSize number of records to read
+     * @param filteredColumns filtering conditions
+     * @param currentSortedColumns sorting conditions (attribute names)
+     * @param currentSortedVersusColumns sorting conditions (order versus)
+     * @param valueObjectType value object type
+     * @param baseSQL base SQL
+     * @param paramValues parameters values, related to "?" in "baseSQL" (optional)
+     * @param paramTypes parameters types, related to "?" in "baseSQL" (optional)
+     * @param tableName table name related to baseSQL and v.o.
+     * @param sessions SessionFactory
+     * @param sess Session
+     */
+    public static Response getBlockFromQuery(
+            ResultTransformer resultTransformer,
+            int action,
+            int startIndex,
+            int blockSize,
+            Map filteredColumns,
+            ArrayList currentSortedColumns,
+            ArrayList currentSortedVersusColumns,
+            Class valueObjectType,
+            String baseSQL,
+            Object[] paramValues,
+            Type[] paramTypes,
+            String tableName,
+            SessionFactory sessions,
+            Session sess) throws Exception {
+        return getBlockFromQuery(
+                resultTransformer,
+                new HashMap(),
+                action,
+                startIndex,
+                blockSize,
+                filteredColumns,
+                currentSortedColumns,
+                currentSortedVersusColumns,
+                valueObjectType,
+                baseSQL,
+                paramValues,
+                paramTypes,
+                tableName,
+                sessions,
+                sess);
+    }
+
+    /**
+     * Read a block of records from the result set, by applying filtering and sorting conditions + query parameters.
      * @param decodedAttributes collection of pairs <value object attribute name,attribute defined in HSQL query>
      * @param action fetching versus: PREVIOUS_BLOCK_ACTION, NEXT_BLOCK_ACTION or LAST_BLOCK_ACTION
      * @param startPos start position of data fetching in result set
@@ -857,6 +909,7 @@ public class HibernateUtils {
      * @param sess Session
      */
     public static Response getBlockFromQuery(
+            ResultTransformer resultTransformer,
             Map decodedAttributes,
             int action,
             int startIndex,
@@ -888,12 +941,16 @@ public class HibernateUtils {
                 tableName,
                 sessions);
         //System.out.println(baseSQL);
+        Query q = sess.createQuery(baseSQL).setParameters(values.toArray(), (Type[]) types.toArray(new Type[types.size()]));
+        if (resultTransformer != null) {
+            q = q.setResultTransformer(resultTransformer);
+        }
         return getBlockFromQuery(
                 valueObjectType,
                 action,
                 startIndex,
                 blockSize,
-                sess.createQuery(baseSQL).setParameters(values.toArray(), (Type[]) types.toArray(new Type[types.size()])),
+                q,
                 sess);
     }
 

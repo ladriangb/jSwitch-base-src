@@ -13,6 +13,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.hibernate.type.Type;
+import org.openswing.swing.client.GridControl;
 import org.openswing.swing.message.receive.java.ErrorResponse;
 import org.openswing.swing.message.receive.java.Response;
 import org.openswing.swing.message.receive.java.VOListResponse;
@@ -22,6 +23,10 @@ import org.openswing.swing.table.client.GridController;
 import org.openswing.swing.table.java.GridDataLocator;
 import org.openswing.swing.util.server.HibernateUtils;
 import com.jswitch.base.vista.util.DefaultGridFrame;
+import java.awt.Component;
+import java.util.HashMap;
+import org.hibernate.transform.AliasedTupleSRT;
+import org.openswing.swing.table.columns.client.Column;
 
 /**
  *
@@ -58,10 +63,15 @@ public class DefaultGridFrameController extends GridController implements GridDa
             ArrayList currentSortedColumns, ArrayList currentSortedVersusColumns, Class valueObjectType, Map otherGridParams) {
         Session s = null;
         try {
-            String sql = "FROM " + claseModeloFullPath + " C ";
+
+            String tableName = "C";
+            String select = gridFrame.getGridControl().getVOListTableModel().
+                    createSelect("C", AliasedTupleSRT.SEPARATOR);
+            String sql = select + " FROM " + claseModeloFullPath + " " + tableName + " ";
             SessionFactory sf = HibernateUtil.getSessionFactory();
             s = sf.openSession();
             Response res = HibernateUtils.getBlockFromQuery(
+                    new AliasedTupleSRT(Class.forName(claseModeloFullPath)),
                     action,
                     startIndex,
                     General.licencia.getBlockSize(),
@@ -72,20 +82,9 @@ public class DefaultGridFrameController extends GridController implements GridDa
                     sql,
                     new Object[0],
                     new Type[0],
-                    "C",
+                    tableName,
                     sf,
                     s);
-//           Response res = HibernateUtils.getAllFromQuery(
-//                    filteredColumns,
-//                    currentSortedColumns,
-//                    currentSortedVersusColumns,
-//                    valueObjectType,
-//                    sql,
-//                    new Object[0],
-//                    new Type[0],
-//                    "C",
-//                    sf,
-//                    s);
             return res;
         } catch (Exception ex) {
             LoggerUtil.error(this.getClass(), "loadData", ex);

@@ -38,13 +38,13 @@ public class Encabezado extends BeanVO implements Auditable {
     @Size(min = 4, max = 120)
     @BusinessKey
     private String nombre;
-    /**
-     * Ciudad donde se encuentra la sucursal
-     */
-    @Column
-    @Size(min = 4, max = 120)
-    @BusinessKey
-    private String cuidad;
+//    /**
+//     * Ciudad donde se encuentra la sucursal
+//     */
+//    @Column
+//    @Size(min = 4, max = 120)
+//    @BusinessKey
+//    private String cuidad;
     /**
      */
     @Column
@@ -154,20 +154,20 @@ public class Encabezado extends BeanVO implements Auditable {
         this.auditoria = auditoria;
     }
 
-    /**
-     * Ciudad donde se encuentra la sucursal
-     * @return the cuidad
-     */
-    public String getCuidad() {
-        return cuidad;
-    }
-
-    /**
-     * Ciudad donde se encuentra la sucursal
-     * @param cuidad the cuidad to set
-     */
-    public void setCuidad(String cuidad) {
-        this.cuidad = cuidad;
-    }
+//    /**
+//     * Ciudad donde se encuentra la sucursal
+//     * @return the cuidad
+//     */
+//    public String getCuidad() {
+//        return cuidad;
+//    }
+//
+//    /**
+//     * Ciudad donde se encuentra la sucursal
+//     * @param cuidad the cuidad to set
+//     */
+//    public void setCuidad(String cuidad) {
+//        this.cuidad = cuidad;
+//    }
         
 }
