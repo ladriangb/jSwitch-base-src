@@ -217,7 +217,7 @@ public class BuscarPersonaDialog extends InternalFrame {
             Session s = null;
             try {
                 String sqlCount = "SELECT count(P) FROM " + Persona.class.getName() + " as P WHERE ";
-                String sqlRec = "SELECT DISTINCT P FROM " + Persona.class.getName() + " as P WHERE ";
+                String sqlRec = " FROM " + Persona.class.getName() + " as P WHERE ";
                 String where = "";
                 String where2 = "";
                 String napa = "";
@@ -231,7 +231,7 @@ public class BuscarPersonaDialog extends InternalFrame {
 
                 if (persona.getTipoPersona() != null && persona.getTipoPersona().getIdPropio() != null) {
                     sqlCount = "SELECT count(P) FROM " + Persona.class.getName() + " as P left join P.tiposPersona as TP WHERE ";
-                    sqlRec = "SELECT DISTINCT P FROM " + Persona.class.getName() + " as P left join P.tiposPersona as TP WHERE ";
+                    sqlRec = " FROM " + Persona.class.getName() + " as P left join P.tiposPersona as TP WHERE ";
                     where += " TP.id=:idTP ";
                     where2 += " TP.id=? ";
                     napa = " AND ";

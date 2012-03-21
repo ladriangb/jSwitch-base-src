@@ -20,6 +20,7 @@ import org.openswing.swing.message.receive.java.ErrorResponse;
 import org.openswing.swing.message.receive.java.Response;
 import org.openswing.swing.message.receive.java.ValueObject;
 import com.jswitch.persona.vista.Personas2GridFrame;
+import org.hibernate.transform.AliasedTupleSRT;
 import org.openswing.swing.util.server.HibernateUtils;
 
 /**
@@ -41,10 +42,13 @@ public class PersonasGridController extends DefaultGridFrameController implement
 
     @Override
     public Response loadData(int action, int startIndex, Map filteredColumns, ArrayList currentSortedColumns, ArrayList currentSortedVersusColumns, Class valueObjectType, Map otherGridParams) {
-        System.out.println();
         Session s = null;
         try {
-            String sql = "SELECT DISTINCT C FROM " + claseModeloFullPath + " C LEFT JOIN C.tiposPersona T ";
+            String select = gridFrame.getGridControl().getVOListTableModel().createSelect("C", AliasedTupleSRT.SEPARATOR);
+            select = select.replaceFirst("SELECT", "SELECT DISTINCT") + ", C.rif.tipoCedula as rif_tipoCedula ";
+
+            String sql = select + " FROM " + claseModeloFullPath + " C LEFT JOIN C.tiposPersona T ";
+
             List<TipoPersona> tiposPersonasFiltradas = ((Personas2GridFrame) gridFrame).getTiposPersonaFiltro();
             if (tiposPersonasFiltradas != null && tiposPersonasFiltradas.size() != 0) {
                 sql += "WHERE T.id IN ( ";
@@ -60,6 +64,7 @@ public class PersonasGridController extends DefaultGridFrameController implement
             SessionFactory sf = HibernateUtil.getSessionFactory();
             s = sf.openSession();
             Response res = HibernateUtils.getBlockFromQuery(
+                    new AliasedTupleSRT(Persona.class),
                     action,
                     startIndex,
                     General.licencia.getBlockSize(),
