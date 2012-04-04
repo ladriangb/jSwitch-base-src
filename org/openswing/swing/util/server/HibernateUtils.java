@@ -1,6 +1,5 @@
 package org.openswing.swing.util.server;
 
-import com.jswitch.base.modelo.HibernateUtil;
 import java.util.*;
 
 import org.hibernate.*;
@@ -12,11 +11,11 @@ import org.openswing.swing.server.*;
 import java.math.BigDecimal;
 import java.beans.*;
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import org.hibernate.FetchMode;
 import org.hibernate.criterion.Restrictions;
 import org.openswing.swing.util.java.Consts;
 import org.hibernate.criterion.Order;
-import org.hibernate.transform.AliasedTupleSRT;
 import org.hibernate.transform.ResultTransformer;
 
 /**
@@ -310,6 +309,9 @@ public class HibernateUtils {
                 }
             } else {
                 if (!where[0].getOperator().equals(Consts.IS_NOT_NULL) && !where[0].getOperator().equals(Consts.IS_NULL)) { //bc
+                    if (propDescriptors.get(where[0].getAttributeName()) == null) {//AND1
+                        propDescriptors.put(where[0].getAttributeName(), where[0].getValue().getClass());
+                    }
                     paramTypes.add(getPropertyType(attributesTypeMap, meta, filterAttrNames.get(i).toString(), propDescriptors));
                 }
             }

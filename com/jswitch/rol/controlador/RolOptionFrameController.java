@@ -77,7 +77,9 @@ public class RolOptionFrameController extends DefaultOptionFrameControler implem
 
 
             oFrame.getCheckBoxControl1().setSelected(m.isEnable());
-            if (nodo.getLevel() > 1) {
+            if (nodo.getLevel() > 1
+                    ||true //TODO PARA MODIFICAR PERMISOS DESDE ADENTRO
+                    ) {
                 oFrame.getCheckBoxControl2().setVisible(false);
                 oFrame.getCheckBoxControl3().setVisible(false);
                 oFrame.getCheckBoxControl4().setVisible(false);

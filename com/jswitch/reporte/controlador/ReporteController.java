@@ -59,12 +59,18 @@ public class ReporteController extends DefaultGridFrameController implements Act
     private Encabezado encabezado;
     private boolean isFiltroActivo;
     static private Map<String, Image> icons = new HashMap<String, Image>();
+    private Date consultaInicio;
 
     public ReporteController() {
     }
 
     public void mostrarReporte(List dataSource, ArrayList<ParametroReporte> parametrosFiltro,
             Reporte reporte, String estilo2) {
+    mostrarReporte(dataSource, parametrosFiltro, reporte, estilo2,new HashMap());
+    
+}
+    public void mostrarReporte(List dataSource, ArrayList<ParametroReporte> parametrosFiltro,
+            Reporte reporte, String estilo2, Map parameters) {
         if (reporte.getEnviarData() && (dataSource == null || dataSource.isEmpty())) {
             JOptionPane.showMessageDialog(MDIFrame.getInstance(), "El documento no tiene paginas.");
         } else {
@@ -78,7 +84,7 @@ public class ReporteController extends DefaultGridFrameController implements Act
             }
             try {
                 String rutaReporte = General.empresa.getRutaReportes() + "/" + reporte.getFile() + ".jasper";
-                Map parameters = new HashMap();
+                //Map parameters = new HashMap();
                 parameters.put("reporteSQL", reporte.getBaseSQL());
                 parameters.put(JRParameter.REPORT_LOCALE, Locale.getDefault());
                 parameters.put(JRParameter.REPORT_RESOURCE_BUNDLE, java.util.ResourceBundle.getBundle("Spanish"));
@@ -109,6 +115,8 @@ public class ReporteController extends DefaultGridFrameController implements Act
                 }
                 JasperPrint jasperPrint = null;
 
+                Date consulta= new Date();
+                
                 if (reporte.getEnviarData()) {
                     jasperPrint = JasperFillManager.fillReport(
                             rutaReporte, parameters,
@@ -144,6 +152,10 @@ public class ReporteController extends DefaultGridFrameController implements Act
                 frame.setAlwaysOnTop(true);
                 //x.toFront();
                 frame.setVisible(true);
+               // System.out.println("Vista levantada");
+                System.out.println("Tiempo de Llenado de Reporte: "+(new Date().getTime()-consulta.getTime())+" ("+(new Date().getTime()-consulta.getTime())/1000.0/60.0+")");
+                if(consultaInicio!=null)
+                System.out.println("Tiempo de Llenado de Reporte: "+(new Date().getTime()-consultaInicio.getTime())+" ("+(new Date().getTime()-consultaInicio.getTime())/1000.0/60.0+")");
 
 //                para mostrar reporte en pdf en la web
 //                OutputStream ouputStream = new FileOutputStream(new File("reporteListo.pdf"));
@@ -207,10 +219,17 @@ public class ReporteController extends DefaultGridFrameController implements Act
                 Session s = null;
                 try {
                     s = HibernateUtil.getSessionFactory().openSession();
+                    
+                    consultaInicio= new Date();
+                    System.out.println("Ejecutando consulta.");
                     List dataSource = s.createQuery(reporte.getBaseSQL()).list();
+                    HashMap parameters=new HashMap()  ;
+                    parameters.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, s);
+                    
+                    System.out.println("Tiempo de Consulta: "+(new Date().getTime()-consultaInicio.getTime())+" ("+(new Date().getTime()-consultaInicio.getTime())/1000.0/60.0+")");
                     mostrarReporte(dataSource,
                             new ArrayList<ParametroReporte>(0),
-                            reporte, estilo);
+                            reporte, estilo, parameters);
                 } catch (Exception ex) {
                     LoggerUtil.error(this.getClass(), "showReport", ex);
                 } finally {

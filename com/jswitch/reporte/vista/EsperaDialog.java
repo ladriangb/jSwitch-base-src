@@ -1,5 +1,8 @@
 package com.jswitch.reporte.vista;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author bc
@@ -7,16 +10,16 @@ package com.jswitch.reporte.vista;
 public class EsperaDialog extends javax.swing.JDialog {
 
     public EsperaDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-	setTitle("Ejecutando Reporte");
-        initComponents();
+        this(parent, modal, "Ejecutando Reporte");
     }
-
 
     public EsperaDialog(java.awt.Frame parent, boolean modal, String tululo) {
         super(parent, modal);
-	setTitle(tululo);
+        setTitle(tululo);
         initComponents();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation(((int) d.getWidth() - this.getWidth()) / 2,
+                ((int) d.getHeight() - this.getHeight()) / 2);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,9 +44,7 @@ public class EsperaDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JOptionPane jOptionPane1;
     // End of variables declaration//GEN-END:variables
-
 }

@@ -960,9 +960,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jPanel21" min="-2" max="-2" attributes="1"/>
-                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Component id="gridControl7" alignment="0" pref="80" max="32767" attributes="2"/>
+                          <Component id="gridControl7" alignment="0" pref="77" max="32767" attributes="2"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -971,8 +971,8 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="1"/>
-                        <Property name="rows" type="int" value="2"/>
                         <Property name="horizontalGap" type="int" value="1"/>
+                        <Property name="rows" type="int" value="2"/>
                         <Property name="verticalGap" type="int" value="2"/>
                       </Layout>
                       <SubComponents>
@@ -1800,7 +1800,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jToggleButton1" min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jPanel6" alignment="0" min="-2" max="-2" attributes="1"/>
-                          <Component id="gridControl1" alignment="0" pref="148" max="32767" attributes="1"/>
+                          <Component id="gridControl1" alignment="0" pref="144" max="32767" attributes="1"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -1903,8 +1903,8 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="2"/>
-                        <Property name="rows" type="int" value="3"/>
                         <Property name="horizontalGap" type="int" value="2"/>
+                        <Property name="rows" type="int" value="3"/>
                         <Property name="verticalGap" type="int" value="2"/>
                       </Layout>
                       <SubComponents>
@@ -1959,7 +1959,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
-                          <Component id="gridControl3" alignment="0" pref="148" max="32767" attributes="1"/>
+                          <Component id="gridControl3" alignment="0" pref="144" max="32767" attributes="1"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -2051,8 +2051,8 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="2"/>
-                        <Property name="rows" type="int" value="3"/>
                         <Property name="horizontalGap" type="int" value="2"/>
+                        <Property name="rows" type="int" value="3"/>
                         <Property name="verticalGap" type="int" value="2"/>
                       </Layout>
                       <SubComponents>
@@ -2102,7 +2102,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jToggleButton3" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jPanel13" alignment="0" min="-2" max="-2" attributes="1"/>
-                          <Component id="gridControl4" alignment="0" pref="148" max="32767" attributes="2"/>
+                          <Component id="gridControl4" alignment="0" pref="144" max="32767" attributes="2"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -2175,8 +2175,8 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="2"/>
-                        <Property name="rows" type="int" value="3"/>
                         <Property name="horizontalGap" type="int" value="2"/>
+                        <Property name="rows" type="int" value="3"/>
                         <Property name="verticalGap" type="int" value="2"/>
                       </Layout>
                       <SubComponents>
@@ -2268,7 +2268,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jToggleButton4" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jPanel15" alignment="0" min="-2" max="-2" attributes="1"/>
-                          <Component id="gridControl2" alignment="0" pref="238" max="32767" attributes="1"/>
+                          <Component id="gridControl2" alignment="0" pref="234" max="32767" attributes="1"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -2376,8 +2376,8 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="2"/>
-                        <Property name="rows" type="int" value="3"/>
                         <Property name="horizontalGap" type="int" value="2"/>
+                        <Property name="rows" type="int" value="3"/>
                         <Property name="verticalGap" type="int" value="2"/>
                       </Layout>
                       <SubComponents>
@@ -2428,9 +2428,9 @@
                                   <Component id="jPanel17" alignment="0" min="-2" max="-2" attributes="1"/>
                                   <Component id="jToggleButton5" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="138" max="32767" attributes="0"/>
+                              <EmptySpace pref="134" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="gridControl5" alignment="0" pref="238" max="32767" attributes="1"/>
+                          <Component id="gridControl5" alignment="0" pref="234" max="32767" attributes="1"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -2534,8 +2534,8 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="2"/>
-                        <Property name="rows" type="int" value="3"/>
                         <Property name="horizontalGap" type="int" value="2"/>
+                        <Property name="rows" type="int" value="3"/>
                         <Property name="verticalGap" type="int" value="2"/>
                       </Layout>
                       <SubComponents>
@@ -2628,9 +2628,9 @@
                                   <Component id="jToggleButton9" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
                                   <Component id="jPanel28" alignment="0" min="-2" max="-2" attributes="1"/>
                               </Group>
-                              <EmptySpace pref="48" max="32767" attributes="0"/>
+                              <EmptySpace pref="44" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="gridControl10" alignment="0" pref="148" max="32767" attributes="1"/>
+                          <Component id="gridControl10" alignment="0" pref="144" max="32767" attributes="1"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -2695,8 +2695,8 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="2"/>
-                        <Property name="rows" type="int" value="3"/>
                         <Property name="horizontalGap" type="int" value="2"/>
+                        <Property name="rows" type="int" value="3"/>
                         <Property name="verticalGap" type="int" value="2"/>
                       </Layout>
                       <SubComponents>
@@ -2744,7 +2744,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jToggleButton7" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jPanel24" alignment="0" min="-2" max="-2" attributes="1"/>
-                          <Component id="gridControl8" alignment="0" pref="148" max="32767" attributes="1"/>
+                          <Component id="gridControl8" alignment="0" pref="144" max="32767" attributes="1"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -2821,8 +2821,8 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="2"/>
-                        <Property name="rows" type="int" value="3"/>
                         <Property name="horizontalGap" type="int" value="2"/>
+                        <Property name="rows" type="int" value="3"/>
                         <Property name="verticalGap" type="int" value="2"/>
                       </Layout>
                       <SubComponents>
@@ -2875,7 +2875,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
-                          <Component id="gridControl9" alignment="0" pref="148" max="32767" attributes="2"/>
+                          <Component id="gridControl9" alignment="0" pref="144" max="32767" attributes="2"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -2964,8 +2964,8 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="2"/>
-                        <Property name="rows" type="int" value="3"/>
                         <Property name="horizontalGap" type="int" value="2"/>
+                        <Property name="rows" type="int" value="3"/>
                         <Property name="verticalGap" type="int" value="2"/>
                       </Layout>
                       <SubComponents>

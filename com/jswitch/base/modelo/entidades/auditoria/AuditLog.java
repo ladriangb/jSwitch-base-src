@@ -1,5 +1,5 @@
-
 package com.jswitch.base.modelo.entidades.auditoria;
+
 import com.jswitch.base.modelo.HibernateUtil;
 import org.hibernate.classic.Session;
 
