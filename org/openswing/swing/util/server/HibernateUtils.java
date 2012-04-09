@@ -536,6 +536,7 @@ public class HibernateUtils {
      * @param sess Session
      */
     public static Response getAllFromQuery(
+            ResultTransformer result,
             Map decodedAttributes,
             Map filteredColumns,
             ArrayList currentSortedColumns,
@@ -569,7 +570,11 @@ public class HibernateUtils {
         int resultSetLength = -1;
         // System.out.println(baseSQL);
         // read the whole result set...
-        List list = sess.createQuery(baseSQL).setParameters(values.toArray(), (Type[]) types.toArray(new Type[types.size()])).list();
+        Query q = sess.createQuery(baseSQL).setParameters(values.toArray(), (Type[]) types.toArray(new Type[types.size()]));
+        if (result != null) {
+            q.setResultTransformer(result);
+        }
+        List list = q.list();
         gridList.addAll(list);
         resultSetLength = gridList.size();
         return new VOListResponse(gridList, moreRows, resultSetLength);
@@ -600,6 +605,7 @@ public class HibernateUtils {
             SessionFactory sessions,
             Session sess) throws Exception {
         return getAllFromQuery(
+                null,
                 new HashMap(),
                 filteredColumns,
                 currentSortedColumns,

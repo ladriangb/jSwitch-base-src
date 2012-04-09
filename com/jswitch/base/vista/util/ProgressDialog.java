@@ -30,9 +30,15 @@ public class ProgressDialog extends JDialog {
         this.description.setText(description);
         this.maxValue.setText("/ " + maxValue);
         this.value.setText("0");
+        if (maxValue == 0) {
+            progressBar.setIndeterminate(true);
+            value.setVisible(false);
+            this.maxValue.setVisible(false);
+        }
         progressBar.setMaximum(maxValue);
         progressBar.setValue(0);
         progressBar.setMinimum(0);
+        this.setTitle(titulo);
         ClientUtils.centerDialog(MDIFrame.getInstance(), this);
         setVisible(true);
 

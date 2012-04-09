@@ -1,5 +1,6 @@
 package org.openswing.swing.export.java;
 
+import com.jswitch.base.vista.util.ProgressDialog;
 import java.io.*;
 import java.lang.reflect.*;
 import java.math.*;
@@ -312,8 +313,8 @@ public class ExportToExcel {
             }
             rownum++;
         }
-
-
+        ProgressDialog pd=new ProgressDialog("Exportar", "Exportando data a XLS", 0);
+        pd.setVisible(true);
         do {
             response = opt.getGridDataLocator().loadData(
                     GridParams.NEXT_BLOCK_ACTION,
@@ -386,7 +387,7 @@ public class ExportToExcel {
                         rownum,
                         1);
             }
-
+            pd.setEventoActual("Exportando: "+rownum);
             start = start + ((VOListResponse) response).getRows().size();
 
             if (!((VOListResponse) response).isMoreRows()) {
@@ -415,7 +416,7 @@ public class ExportToExcel {
                     rownum,
                     2);
         }
-
+        pd.dispose();
         return rownum;
     }
 

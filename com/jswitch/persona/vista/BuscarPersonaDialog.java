@@ -196,7 +196,7 @@ public class BuscarPersonaDialog extends InternalFrame {
     private org.openswing.swing.client.TextControl textControl4;
     // End of variables declaration//GEN-END:variables
 
-    class Buscar extends FormController implements ActionListener {
+class Buscar extends FormController implements ActionListener {
 
         @Override
         public Response loadData(Class valueObjectClass) {
@@ -231,7 +231,7 @@ public class BuscarPersonaDialog extends InternalFrame {
 
                 if (persona.getTipoPersona() != null && persona.getTipoPersona().getIdPropio() != null) {
                     sqlCount = "SELECT count(P) FROM " + Persona.class.getName() + " as P left join P.tiposPersona as TP WHERE ";
-                    sqlRec = " FROM " + Persona.class.getName() + " as P left join P.tiposPersona as TP WHERE ";
+                    sqlRec = " SELECT P FROM " + Persona.class.getName() + " as P left join P.tiposPersona as TP WHERE ";
                     where += " TP.id=:idTP ";
                     where2 += " TP.id=? ";
                     napa = " AND ";
@@ -286,7 +286,7 @@ public class BuscarPersonaDialog extends InternalFrame {
                     }
 
                     new PersonasDetailController(null, (Persona) q.uniqueResult(), null);
-                    } else {
+                } else {
                     if (tp) {
                         values.add(persona.getTipoPersona().getId());
                         valueTypes.add(new LongType());
@@ -303,6 +303,7 @@ public class BuscarPersonaDialog extends InternalFrame {
                     for (int i = 0; i < valueTypes.size(); i++) {
                         tt[i] = valueTypes.get(i);
                     }
+                    sqlRec = sqlRec.replaceFirst("SELECT P", "");
                     new PersonaGridControllerWhitSQL(Personas2GridFrame.class.getName(), PersonaDetailFrame.class.getName(), Persona.class.getName(), null, sqlRec + where2, values.toArray(), tt);
                 }
             } catch (Exception ex) {

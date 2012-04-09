@@ -106,7 +106,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="gridData" pref="391" max="32767" attributes="0"/>
+                  <Component id="gridData" pref="395" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -168,7 +168,6 @@
                 <Property name="editableOnInsert" type="boolean" value="true"/>
                 <Property name="maxCharacters" type="int" value="100"/>
                 <Property name="trimText" type="boolean" value="true"/>
-                <Property name="upperCase" type="boolean" value="true"/>
               </Properties>
             </Component>
             <Component class="org.openswing.swing.table.columns.client.CheckBoxColumn" name="checkBoxColumn2">
@@ -226,9 +225,10 @@
                 </Property>
                 <Property name="columnRequired" type="boolean" value="false"/>
                 <Property name="columnSortable" type="boolean" value="true"/>
-                <Property name="decimals" type="int" value="2"/>
+                <Property name="decimals" type="int" value="4"/>
                 <Property name="editableOnEdit" type="boolean" value="true"/>
                 <Property name="editableOnInsert" type="boolean" value="true"/>
+                <Property name="hideZeroDigits" type="boolean" value="true"/>
                 <Property name="preferredWidth" type="int" value="70"/>
               </Properties>
             </Component>
@@ -241,10 +241,11 @@
                 <Property name="columnSortable" type="boolean" value="true"/>
                 <Property name="currencySymbol" type="java.lang.String" value="%"/>
                 <Property name="currencySymbolOnLeft" type="boolean" value="false"/>
-                <Property name="decimals" type="int" value="2"/>
+                <Property name="decimals" type="int" value="4"/>
                 <Property name="editableOnEdit" type="boolean" value="true"/>
                 <Property name="editableOnInsert" type="boolean" value="true"/>
                 <Property name="headerColumnName" type="java.lang.String" value="Valor Porcentual"/>
+                <Property name="hideZeroDigits" type="boolean" value="true"/>
                 <Property name="preferredWidth" type="int" value="70"/>
               </Properties>
             </Component>

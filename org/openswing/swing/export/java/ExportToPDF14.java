@@ -1,5 +1,6 @@
 package org.openswing.swing.export.java;
 
+import com.jswitch.base.vista.util.ProgressDialog;
 import java.io.*;
 import java.lang.reflect.*;
 import java.sql.Date;
@@ -255,7 +256,8 @@ public class ExportToPDF14 {
                     0);
         }
 
-
+        ProgressDialog pd = new ProgressDialog("Exportar", "Exportando data a PDF", 0);
+        pd.setVisible(true);
         do {
             response = opt.getGridDataLocator().loadData(
                     GridParams.NEXT_BLOCK_ACTION,
@@ -296,6 +298,7 @@ public class ExportToPDF14 {
                         1);
 
                 rownum++;
+                pd.setEventoActual("Exportando: "+rownum);
             }
 
             start = start + ((VOListResponse) response).getRows().size();
@@ -331,7 +334,7 @@ public class ExportToPDF14 {
         } else {
             document.add(table);
         }
-
+        pd.dispose();
     }
 
     /**

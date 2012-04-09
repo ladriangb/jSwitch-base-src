@@ -105,7 +105,6 @@ public class ConfiguracionesGeneralesGridFrame extends DefaultGridFrame {
         textColumn1.setEditableOnInsert(true);
         textColumn1.setMaxCharacters(100);
         textColumn1.setTrimText(true);
-        textColumn1.setUpperCase(true);
         gridData.getColumnContainer().add(textColumn1);
 
         checkBoxColumn2.setColumnName("valorBoolean");
@@ -143,9 +142,10 @@ public class ConfiguracionesGeneralesGridFrame extends DefaultGridFrame {
         decimalColumn2.setColumnName("valorDouble");
         decimalColumn2.setColumnRequired(false);
         decimalColumn2.setColumnSortable(true);
-        decimalColumn2.setDecimals(2);
+        decimalColumn2.setDecimals(4);
         decimalColumn2.setEditableOnEdit(true);
         decimalColumn2.setEditableOnInsert(true);
+        decimalColumn2.setHideZeroDigits(true);
         decimalColumn2.setPreferredWidth(70);
         gridData.getColumnContainer().add(decimalColumn2);
 
@@ -154,10 +154,11 @@ public class ConfiguracionesGeneralesGridFrame extends DefaultGridFrame {
         currencyColumn1.setColumnSortable(true);
         currencyColumn1.setCurrencySymbol("%");
         currencyColumn1.setCurrencySymbolOnLeft(false);
-        currencyColumn1.setDecimals(2);
+        currencyColumn1.setDecimals(4);
         currencyColumn1.setEditableOnEdit(true);
         currencyColumn1.setEditableOnInsert(true);
         currencyColumn1.setHeaderColumnName("Valor Porcentual");
+        currencyColumn1.setHideZeroDigits(true);
         currencyColumn1.setPreferredWidth(70);
         gridData.getColumnContainer().add(currencyColumn1);
 
@@ -213,7 +214,7 @@ public class ConfiguracionesGeneralesGridFrame extends DefaultGridFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addComponent(gridData, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

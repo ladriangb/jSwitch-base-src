@@ -27,7 +27,7 @@ import javax.validation.constraints.NotNull;
  * @author Orlando Becerra
  */
 @Entity
-@Table(name="SYST_Empresa")
+@Table(name = "SYST_Empresa")
 public class Empresa extends BeanVO implements Serializable {
 
     /**
@@ -116,6 +116,20 @@ public class Empresa extends BeanVO implements Serializable {
     @BusinessKey
     private Boolean textoMayuscula;
     /**
+     * Pregunta si la liquidacion se efectuara en la orden de pago o al 
+     * liquidar el detalle de siniestro
+     */
+    @Column
+    @BusinessKey
+    private Boolean liquidarEnOrden;
+    /**
+     * Pregunta si el calculo se efectuara en la orden de pago o al 
+     * liquidar el detalle de siniestro
+     */
+    @Column
+    @BusinessKey
+    private Boolean sustraendoEnOrden;
+    /**
      *
      */
     @Column
@@ -124,13 +138,13 @@ public class Empresa extends BeanVO implements Serializable {
      * Encabesado de los Reportes
      */
     @ManyToOne
-    private Encabezado encabezado;   
+    private Encabezado encabezado;
     /**
      * Coleccion de cuentas bancarias de la empresa
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @BusinessKey(exclude = Method.ALL)
-    private Set<CuentaBancariaPersona> cuentasBancarias = new HashSet<CuentaBancariaPersona>(0);    
+    private Set<CuentaBancariaPersona> cuentasBancarias = new HashSet<CuentaBancariaPersona>(0);
     /**
      *
      */
@@ -141,6 +155,8 @@ public class Empresa extends BeanVO implements Serializable {
     public Empresa() {
         textoMayuscula = false;
         fileGridProfileManager = false;
+        liquidarEnOrden = true;
+
     }
 
     public Empresa(String rif2, String nombre, String emailEmpresaSoporte, String emailSistemaSoporte, String rutaDocDigitales, String rutaReportes) {
@@ -305,5 +321,41 @@ public class Empresa extends BeanVO implements Serializable {
     public void setCuentasBancarias(Set<CuentaBancariaPersona> cuentasBancarias) {
         this.cuentasBancarias = cuentasBancarias;
     }
-            
+
+    /**
+     * Pregunta si la liquidacion se efectuara en la orden de pago o al
+     * liquidar el detalle de siniestro
+     * @return the liquidarEnOrden
+     */
+    public Boolean getLiquidarEnOrden() {
+        return liquidarEnOrden;
+    }
+
+    /**
+     * Pregunta si la liquidacion se efectuara en la orden de pago o al
+     * liquidar el detalle de siniestro
+     * @param liquidarEnOrden the liquidarEnOrden to set
+     */
+    public void setLiquidarEnOrden(Boolean liquidarEnOrden) {
+        this.liquidarEnOrden = liquidarEnOrden;
+    }
+
+    /**
+     * Pregunta si el calculo se efectuara en la orden de pago o al
+     * liquidar el detalle de siniestro
+     * @return the sustraendoEnOrden
+     */
+    public Boolean getSustraendoEnOrden() {
+        return sustraendoEnOrden;
+    }
+
+    /**
+     * Pregunta si el calculo se efectuara en la orden de pago o al
+     * liquidar el detalle de siniestro
+     * @param sustraendoEnOrden the sustraendoEnOrden to set
+     */
+    public void setSustraendoEnOrden(Boolean sustraendoEnOrden) {
+        this.sustraendoEnOrden = sustraendoEnOrden;
+    }
+    
 }

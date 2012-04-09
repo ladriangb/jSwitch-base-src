@@ -44,6 +44,7 @@ import javax.persistence.Table;
 
 /**
  * Clase Maestra Supertipo de Personas
+ *
  * @version 1.1 22/05/2009
  * @since JDK 1.5
  * @see Tipo
@@ -73,8 +74,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     @BusinessKey(include = Method.TO_STRING)
     private Long id;
     /**
-     * Codigo en Archivo
-     * donde conseguir el archivo fisico
+     * Codigo en Archivo donde conseguir el archivo fisico
      */
     @Column
     @BusinessKey
@@ -92,8 +92,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     @BusinessKey
     private Rif rif;
     /**
-     * Nombre completo de la persona
-     * Autogenerado si es persona natural
+     * Nombre completo de la persona Autogenerado si es persona natural
      */
     @Column
     @Size(min = 2, max = 240)
@@ -134,9 +133,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     @BusinessKey
     private Ranking ranking;
     /**
-     * Tipo de contribullente
-     * <p>
-     * Ejemplo: Contribuyente: formal, ordinario
+     * Tipo de contribullente <p> Ejemplo: Contribuyente: formal, ordinario
      */
     @Column
     @Enumerated(EnumType.STRING)
@@ -169,6 +166,12 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     @BusinessKey
     private TipoActividadEconomica actividadEconomica;
     /**
+     * Direeccion Fiscal
+     */
+    @ManyToOne()
+    @BusinessKey(exclude = Method.ALL)
+    private DireccionPersona direccionFiscal;
+    /**
      * Coleccion, tipo de persona
      */
     @ManyToMany(fetch = FetchType.LAZY)
@@ -181,7 +184,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     @BusinessKey(exclude = Method.ALL)
     private Set<Observacion> observaciones = new HashSet<Observacion>(0);
     /**
-     *  Coleccion de telefonos de la persona
+     * Coleccion de telefonos de la persona
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @BusinessKey(exclude = Method.ALL)
@@ -230,7 +233,8 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Crea una instancia de Persona
-     * @param rif 
+     *
+     * @param rif
      */
     public Persona(Rif rif) {
         this.rif = rif;
@@ -238,11 +242,12 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Crea una instancia de Persona
+     *
      * @param rif
      * @param ranking
      * @param tipoContribuyente
      * @param fechaUltimoBalance
-     * @param gobierno 
+     * @param gobierno
      */
     public Persona(Rif rif, Ranking ranking, TipoContribuyente tipoContribuyente, Date fechaUltimoBalance, Boolean gobierno) {
         this.gobierno = gobierno;
@@ -254,13 +259,14 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Crea una instancia de Persona
+     *
      * @param rif
      * @param ranking
      * @param tipoContribuyente
      * @param fechaUltimoBalance
      * @param gobierno
      * @param capacidadEconomica
-     * @param actividadEconomica 
+     * @param actividadEconomica
      */
     public Persona(Rif rif, Ranking ranking, TipoContribuyente tipoContribuyente, Date fechaUltimoBalance, Boolean gobierno, TipoCapacidadEconomica capacidadEconomica, TipoActividadEconomica actividadEconomica) {
         this.gobierno = gobierno;
@@ -274,6 +280,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Actividad Economica de la persona
+     *
      * @return the actividadEconomica
      */
     public TipoActividadEconomica getActividadEconomica() {
@@ -298,6 +305,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Capacidad Economica de la persona
+     *
      * @return the capacidadEconomica
      */
     public TipoCapacidadEconomica getCapacidadEconomica() {
@@ -305,8 +313,8 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     }
 
     /**
-     * Codigo en Archivo
-     * donde conseguir el archivo fisico
+     * Codigo en Archivo donde conseguir el archivo fisico
+     *
      * @return the codigoArchivo
      */
     public String getCodigoArchivo() {
@@ -315,6 +323,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Codigo ??
+     *
      * @return the codigoX
      */
     public String getCodigoX() {
@@ -323,6 +332,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de cuentas bancarias de la persona
+     *
      * @return the cuentasBancarias
      */
     public Set<CuentaBancariaPersona> getCuentasBancarias() {
@@ -331,6 +341,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de direcciones de la persona
+     *
      * @return the direcciones
      */
     public Set<DireccionPersona> getDirecciones() {
@@ -339,6 +350,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de documentos anexos de la persona
+     *
      * @return the documentos
      */
     public Set<Documento> getDocumentos() {
@@ -347,6 +359,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Email de la persona
+     *
      * @return the email
      */
     public String getEmail() {
@@ -355,6 +368,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Fecha del ultimo balance de la persona
+     *
      * @return the fechaUltimoBalance
      */
     public Date getFechaUltimoBalance() {
@@ -363,6 +377,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Es un ente gubernamental?
+     *
      * @return the gobierno
      */
     public Boolean getGobierno() {
@@ -371,6 +386,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Pk autogenerado
+     *
      * @return the id
      */
     public Long getId() {
@@ -379,6 +395,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Nombre Corto de la persona
+     *
      * @return the nombreCorto
      */
     public String getNombreCorto() {
@@ -386,8 +403,8 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     }
 
     /**
-     * Nombre completo de la persona
-     * Autogenerado si es persona natural
+     * Nombre completo de la persona Autogenerado si es persona natural
+     *
      * @return the nombreLargo
      */
     public String getNombreLargo() {
@@ -396,6 +413,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de observaciones de la persona
+     *
      * @return the observaciones
      */
     public Set<Observacion> getObservaciones() {
@@ -412,6 +430,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Rankin de persona
+     *
      * @return the ranking
      */
     public Ranking getRanking() {
@@ -420,6 +439,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Datos de la identificacion de la persona
+     *
      * @return the rif
      */
     public Rif getRif() {
@@ -428,6 +448,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de sucursales de de la persona juridica
+     *
      * @return the sucursales
      */
     public Set<Sucursal> getSucursales() {
@@ -436,6 +457,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de telefonos de la persona
+     *
      * @return the telefonos
      */
     public Set<TelefonoPersona> getTelefonos() {
@@ -443,9 +465,8 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     }
 
     /**
-     * Tipo de contribullente
-     * <p>
-     * Ejemplo: Contribuyente: formal, ordinario
+     * Tipo de contribullente <p> Ejemplo: Contribuyente: formal, ordinario
+     *
      * @return the tipoContribuyente
      */
     public TipoContribuyente getTipoContribuyente() {
@@ -454,6 +475,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion, tipo de persona
+     *
      * @return the tiposPersona
      */
     public Set<TipoPersona> getTiposPersona() {
@@ -462,6 +484,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Web de la persona
+     *
      * @return the web
      */
     public String getWeb() {
@@ -470,6 +493,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Actividad Economica de la persona
+     *
      * @param actividadEconomica the actividadEconomica to set
      */
     public void setActividadEconomica(TipoActividadEconomica actividadEconomica) {
@@ -494,6 +518,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Capacidad Economica de la persona
+     *
      * @param capacidadEconomica the capacidadEconomica to set
      */
     public void setCapacidadEconomica(TipoCapacidadEconomica capacidadEconomica) {
@@ -501,8 +526,8 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     }
 
     /**
-     * Codigo en Archivo
-     * donde conseguir el archivo fisico
+     * Codigo en Archivo donde conseguir el archivo fisico
+     *
      * @param codigoArchivo the codigoArchivo to set
      */
     public void setCodigoArchivo(String codigoArchivo) {
@@ -511,6 +536,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Codigo ??
+     *
      * @param codigoX the codigoX to set
      */
     public void setCodigoX(String codigoX) {
@@ -519,6 +545,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de cuentas bancarias de la persona
+     *
      * @param cuentasBancarias the cuentasBancarias to set
      */
     public void setCuentasBancarias(Set<CuentaBancariaPersona> cuentasBancarias) {
@@ -527,6 +554,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de direcciones de la persona
+     *
      * @param direcciones the direcciones to set
      */
     public void setDirecciones(Set<DireccionPersona> direcciones) {
@@ -535,6 +563,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de documentos anexos de la persona
+     *
      * @param documentos the documentos to set
      */
     public void setDocumentos(Set<Documento> documentos) {
@@ -543,6 +572,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Email de la persona
+     *
      * @param email the email to set
      */
     public void setEmail(String email) {
@@ -551,6 +581,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Fecha del ultimo balance de la persona
+     *
      * @param fechaUltimoBalance the fechaUltimoBalance to set
      */
     public void setFechaUltimoBalance(Date fechaUltimoBalance) {
@@ -559,6 +590,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Es un ente gubernamental?
+     *
      * @param gobierno the gobierno to set
      */
     public void setGobierno(Boolean gobierno) {
@@ -567,6 +599,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Pk autogenerado
+     *
      * @param id the id to set
      */
     public void setId(Long id) {
@@ -575,6 +608,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Nombre Corto de la persona
+     *
      * @param nombreCorto the nombreCorto to set
      */
     public void setNombreCorto(String nombreCorto) {
@@ -582,8 +616,8 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     }
 
     /**
-     * Nombre completo de la persona
-     * Autogenerado si es persona natural
+     * Nombre completo de la persona Autogenerado si es persona natural
+     *
      * @param nombreLargo the nombreLargo to set
      */
     public void setNombreLargo(String nombreLargo) {
@@ -592,6 +626,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de observaciones de la persona
+     *
      * @param observaciones the observaciones to set
      */
     public void setObservaciones(Set<Observacion> observaciones) {
@@ -608,6 +643,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Rankin de persona
+     *
      * @param ranking the ranking to set
      */
     public void setRanking(Ranking ranking) {
@@ -616,6 +652,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Datos de la identificacion de la persona
+     *
      * @param rif the rif to set
      */
     public void setRif(Rif rif) {
@@ -624,6 +661,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de sucursales de de la persona juridica
+     *
      * @param sucursales the sucursales to set
      */
     public void setSucursales(Set<Sucursal> sucursales) {
@@ -632,6 +670,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion de telefonos de la persona
+     *
      * @param telefonos the telefonos to set
      */
     public void setTelefonos(Set<TelefonoPersona> telefonos) {
@@ -639,9 +678,8 @@ public class Persona extends BeanVO implements Serializable, Auditable {
     }
 
     /**
-     * Tipo de contribullente
-     * <p>
-     * Ejemplo: Contribuyente: formal, ordinario
+     * Tipo de contribullente <p> Ejemplo: Contribuyente: formal, ordinario
+     *
      * @param tipoContribuyente the tipoContribuyente to set
      */
     public void setTipoContribuyente(TipoContribuyente tipoContribuyente) {
@@ -650,6 +688,7 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Coleccion, tipo de persona
+     *
      * @param tiposPersona the tiposPersona to set
      */
     public void setTiposPersona(Set<TipoPersona> tiposPersona) {
@@ -658,10 +697,19 @@ public class Persona extends BeanVO implements Serializable, Auditable {
 
     /**
      * Web de la persona
+     *
      * @param web the web to set
      */
     public void setWeb(String web) {
         this.web = web;
+    }
+
+    public DireccionPersona getDireccionFiscal() {
+        return direccionFiscal;
+    }
+
+    public void setDireccionFiscal(DireccionPersona direccionFiscal) {
+        this.direccionFiscal = direccionFiscal;
     }
 
     public String toString2() {

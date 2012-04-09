@@ -1918,8 +1918,6 @@
                         </Component>
                         <Component class="org.openswing.swing.client.ReloadButton" name="reloadButton3">
                         </Component>
-                        <Component class="org.openswing.swing.client.FilterButton" name="filterButton3">
-                        </Component>
                       </SubComponents>
                     </Container>
                     <Component class="javax.swing.JToggleButton" name="jToggleButton1">
@@ -2066,8 +2064,6 @@
                         </Component>
                         <Component class="org.openswing.swing.client.ReloadButton" name="reloadButton5">
                         </Component>
-                        <Component class="org.openswing.swing.client.FilterButton" name="filterButton5">
-                        </Component>
                       </SubComponents>
                     </Container>
                     <Component class="javax.swing.JToggleButton" name="jToggleButton2">
@@ -2189,8 +2185,6 @@
                         <Component class="org.openswing.swing.client.SaveButton" name="saveButton6">
                         </Component>
                         <Component class="org.openswing.swing.client.ReloadButton" name="reloadButton6">
-                        </Component>
-                        <Component class="org.openswing.swing.client.FilterButton" name="filterButton6">
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2331,11 +2325,21 @@
                             <Property name="preferredWidth" type="int" value="250"/>
                           </Properties>
                         </Component>
+                        <Component class="org.openswing.swing.table.columns.client.TextColumn" name="textColumn10">
+                          <Properties>
+                            <Property name="columnName" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="&quot;zonaPostal&quot;" type="code"/>
+                            </Property>
+                            <Property name="editableOnEdit" type="boolean" value="true"/>
+                            <Property name="editableOnInsert" type="boolean" value="true"/>
+                          </Properties>
+                        </Component>
                         <Component class="org.openswing.swing.table.columns.client.DecimalColumn" name="decimalColumn6">
                           <Properties>
                             <Property name="columnName" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="&quot;latitud&quot;" type="code"/>
                             </Property>
+                            <Property name="columnRequired" type="boolean" value="false"/>
                             <Property name="decimals" type="int" value="7"/>
                             <Property name="editableOnEdit" type="boolean" value="true"/>
                             <Property name="editableOnInsert" type="boolean" value="true"/>
@@ -2346,16 +2350,8 @@
                             <Property name="columnName" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="&quot;longitud&quot;" type="code"/>
                             </Property>
+                            <Property name="columnRequired" type="boolean" value="false"/>
                             <Property name="decimals" type="int" value="7"/>
-                            <Property name="editableOnEdit" type="boolean" value="true"/>
-                            <Property name="editableOnInsert" type="boolean" value="true"/>
-                          </Properties>
-                        </Component>
-                        <Component class="org.openswing.swing.table.columns.client.TextColumn" name="textColumn10">
-                          <Properties>
-                            <Property name="columnName" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="&quot;zonaPostal&quot;" type="code"/>
-                            </Property>
                             <Property name="editableOnEdit" type="boolean" value="true"/>
                             <Property name="editableOnInsert" type="boolean" value="true"/>
                           </Properties>

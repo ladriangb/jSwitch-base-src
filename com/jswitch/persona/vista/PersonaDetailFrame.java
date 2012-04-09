@@ -212,7 +212,6 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
         deleteButton3 = new org.openswing.swing.client.DeleteButton();
         saveButton3 = new org.openswing.swing.client.SaveButton();
         reloadButton3 = new org.openswing.swing.client.ReloadButton();
-        filterButton3 = new org.openswing.swing.client.FilterButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jPanel10 = new javax.swing.JPanel();
         gridControl3 = new org.openswing.swing.client.GridControl();
@@ -227,7 +226,6 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
         deleteButton5 = new org.openswing.swing.client.DeleteButton();
         saveButton5 = new org.openswing.swing.client.SaveButton();
         reloadButton5 = new org.openswing.swing.client.ReloadButton();
-        filterButton5 = new org.openswing.swing.client.FilterButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jPanel12 = new javax.swing.JPanel();
         gridControl4 = new org.openswing.swing.client.GridControl();
@@ -241,7 +239,6 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
         deleteButton6 = new org.openswing.swing.client.DeleteButton();
         saveButton6 = new org.openswing.swing.client.SaveButton();
         reloadButton6 = new org.openswing.swing.client.ReloadButton();
-        filterButton6 = new org.openswing.swing.client.FilterButton();
         jToggleButton3 = new javax.swing.JToggleButton();
         datosUbicacion = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -250,9 +247,9 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
         decimalColumn2 = new org.openswing.swing.table.columns.client.DecimalColumn();
         codLookupColumn5 = new org.openswing.swing.table.columns.client.CodLookupColumn();
         textColumn6 = new org.openswing.swing.table.columns.client.TextColumn();
+        textColumn10 = new org.openswing.swing.table.columns.client.TextColumn();
         decimalColumn6 = new org.openswing.swing.table.columns.client.DecimalColumn();
         decimalColumn3 = new org.openswing.swing.table.columns.client.DecimalColumn();
-        textColumn10 = new org.openswing.swing.table.columns.client.TextColumn();
         textColumn7 = new org.openswing.swing.table.columns.client.TextColumn();
         jPanel15 = new javax.swing.JPanel();
         insertButton4 = new org.openswing.swing.client.InsertButton();
@@ -1391,7 +1388,6 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
         jPanel6.add(deleteButton3);
         jPanel6.add(saveButton3);
         jPanel6.add(reloadButton3);
-        jPanel6.add(filterButton3);
 
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1467,7 +1463,6 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
         jPanel11.add(deleteButton5);
         jPanel11.add(saveButton5);
         jPanel11.add(reloadButton5);
-        jPanel11.add(filterButton5);
 
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1535,7 +1530,6 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
         jPanel13.add(deleteButton6);
         jPanel13.add(saveButton6);
         jPanel13.add(reloadButton6);
-        jPanel13.add(filterButton6);
 
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1613,22 +1607,24 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
         textColumn6.setPreferredWidth(250);
         gridControl2.getColumnContainer().add(textColumn6);
 
+        textColumn10.setColumnName("zonaPostal");
+        textColumn10.setEditableOnEdit(true);
+        textColumn10.setEditableOnInsert(true);
+        gridControl2.getColumnContainer().add(textColumn10);
+
         decimalColumn6.setColumnName("latitud");
+        decimalColumn6.setColumnRequired(false);
         decimalColumn6.setDecimals(7);
         decimalColumn6.setEditableOnEdit(true);
         decimalColumn6.setEditableOnInsert(true);
         gridControl2.getColumnContainer().add(decimalColumn6);
 
         decimalColumn3.setColumnName("longitud");
+        decimalColumn3.setColumnRequired(false);
         decimalColumn3.setDecimals(7);
         decimalColumn3.setEditableOnEdit(true);
         decimalColumn3.setEditableOnInsert(true);
         gridControl2.getColumnContainer().add(decimalColumn3);
-
-        textColumn10.setColumnName("zonaPostal");
-        textColumn10.setEditableOnEdit(true);
-        textColumn10.setEditableOnInsert(true);
-        gridControl2.getColumnContainer().add(textColumn10);
 
         textColumn7.setColumnName("observacion");
         textColumn7.setColumnRequired(false);
@@ -2472,9 +2468,6 @@ public class PersonaDetailFrame extends DefaultDetailFrame {
     private org.openswing.swing.client.EditButton editButton6;
     private org.openswing.swing.client.EditButton editButton7;
     private org.openswing.swing.client.EditButton editButton9;
-    private org.openswing.swing.client.FilterButton filterButton3;
-    private org.openswing.swing.client.FilterButton filterButton5;
-    private org.openswing.swing.client.FilterButton filterButton6;
     private org.openswing.swing.form.client.Form formJuri;
     private org.openswing.swing.form.client.Form formNatu;
     private org.openswing.swing.client.GridControl gridControl1;

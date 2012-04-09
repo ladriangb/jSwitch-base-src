@@ -1,5 +1,3 @@
-
-
 package com.jswitch.persona.vista;
 
 import com.jswitch.persona.controlador.PersonasDetailController;
@@ -7,6 +5,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import com.jswitch.base.modelo.Dominios;
 import com.jswitch.base.modelo.Dominios.TipoCedula;
@@ -22,6 +21,7 @@ import org.hibernate.classic.Session;
 import org.openswing.swing.form.client.Form;
 import org.openswing.swing.form.client.FormController;
 import org.openswing.swing.mdi.client.MDIFrame;
+import org.openswing.swing.message.receive.java.ErrorResponse;
 import org.openswing.swing.message.receive.java.Response;
 import org.openswing.swing.message.receive.java.VOResponse;
 import org.openswing.swing.message.receive.java.ValueObject;
@@ -337,21 +337,40 @@ public class RifDialog extends javax.swing.JDialog {
             Session s = null;
             Rif rifConsulta = null;
             Persona p = null;
+            List lista;
             if (tipoCedula.getSelectedIndex() <= 5) {
 
                 s = HibernateUtil.getSessionFactory().openSession();
                 Query q = null;
-                if (idPersona == null) {
-                    q = s.createQuery("FROM " + Persona.class.getName()
-                            + " WHERE rif.rif=?").
-                            setString(0, textControl2.getText());
+                if (numericControl1.getText() != null && !numericControl1.getText().trim().isEmpty()) {
+                    if (idPersona == null) {
+                        q = s.createQuery("FROM " + Persona.class.getName()
+                                + " WHERE rif.rif=?").
+                                setString(0, textControl2.getText());
+                    } else {
+                        q = s.createQuery("FROM " + Persona.class.getName()
+                                + " p WHERE p.rif.rif=? AND p.id!=?").
+                                setString(0, textControl2.getText()).setLong(1, idPersona);
+                    }
+                    p = (Persona) q.uniqueResult();
                 } else {
-                    q = s.createQuery("FROM " + Persona.class.getName()
-                            + " p WHERE p.rif.rif=? AND p.id!=?").
-                            setString(0, textControl2.getText()).setLong(1, idPersona);
+                    if (idPersona == null) {
+                        q = s.createQuery("FROM " + Persona.class.getName()
+                                + " WHERE rif.cedulaCompleta=?").
+                                setString(0, textControl1.getText());
+                    } else {
+                        q = s.createQuery("FROM " + Persona.class.getName()
+                                + " p WHERE p.rif.cedulaCompleta=? AND p.id!=?").
+                                setString(0, textControl1.getText()).setLong(1, idPersona);
+                    }
+                    lista = q.list();
+                    if (lista.size() == 1) {
+                        p = (Persona) lista.get(0);
+                    } else {
+                        return new ErrorResponse("Hay Varias Personas con la misma Cédula");
+                        //TODO PARA MAS PERSONAS
+                    }
                 }
-
-                p = (Persona) q.uniqueResult();
 
                 if (p != null) {
                     rifConsulta = p.getRif();
@@ -401,7 +420,7 @@ public class RifDialog extends javax.swing.JDialog {
             } else {
                 ok = true;
                 rif = (Rif) newPersistentObject;
-                rif.setTipoCedula((TipoCedula)tipoCedula.getValue());
+                rif.setTipoCedula((TipoCedula) tipoCedula.getValue());
                 RifDialog.this.dispose();
                 if (!editarRegistro) {
                     new PersonasDetailController(linkForm, linkAttName, adicional, null, null, getRif());
